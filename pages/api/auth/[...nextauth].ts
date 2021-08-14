@@ -12,19 +12,19 @@ export default NextAuth({
 
   callbacks: {
     async signIn(user, account, profile) {
-      console.log("signIn:\n", user, account, profile);
+      // console.log("signIn:\n", user, account, profile);
       return true;
     },
     async redirect(url, baseUrl) {
-      console.log("redirect:\n", url, baseUrl);
+      // console.log("redirect:\n", url, baseUrl);
       return baseUrl;
     },
     async session(session, user) {
-      console.log("session:\n", session, user);
+      // console.log("session:\n", session, user);
       return session;
     },
     async jwt(token, user, account, profile, isNewUser) {
-      console.log("jwt:\n", token, user, account, profile, isNewUser);
+      // console.log("jwt:\n", token, user, account, profile, isNewUser);
       return token;
     },
   },

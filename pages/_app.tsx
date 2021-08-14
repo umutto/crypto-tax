@@ -4,7 +4,6 @@ import { Provider } from "next-auth/client";
 import "../utils/font-awesome";
 
 function App({ Component, pageProps }: AppProps) {
-  console.log(pageProps.session);
   return (
     <Provider session={pageProps.session}>
       <Component {...pageProps} />
