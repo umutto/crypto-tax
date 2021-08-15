@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class Header extends React.Component<{
+export default class Welcome extends React.Component<{
   user?: Record<string, string | null | undefined>;
 }> {
   render() {

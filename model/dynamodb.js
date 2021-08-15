@@ -1,5 +1,18 @@
 import aws from "aws-sdk";
 
+/**
+ * Example Table structure
+ * PrimaryKey: from#to (btc#jpy)
+ * SortKey: registerDateEpoch#transactionDateEpoch (1488888888#1288888888)
+ * SentAmount: int (15.22)
+ * ReceivedAmount: int (63261.36)
+ * FeeAmount: int (0.0)
+ * FeeCurrency?: string (JPY)
+ * Label?: string (airdrop)
+ * Description?: string (cid_0000000)
+ * TxHash?: string (AEGBABAEBEAHGAHE)
+ */
+
 const client = new aws.DynamoDB.DocumentClient({
   accessKeyId: process.env.DYNAMODB_ACCESS_KEY,
   secretAccessKey: process.env.DYNAMODB_SECRET_KEY,

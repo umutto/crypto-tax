@@ -1,13 +1,20 @@
-import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { Provider } from "next-auth/client";
+import { AuthGuard } from "../components";
+
+import "../styles/globals.scss";
 import "../utils/font-awesome";
 
-function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: any) {
   return (
     <Provider session={pageProps.session}>
-      <Component {...pageProps} />
+      {Component.requireAuth ? (
+        <AuthGuard>
+          <Component {...pageProps} />
+        </AuthGuard>
+      ) : (
+        <Component {...pageProps} />
+      )}
     </Provider>
   );
 }
-export default App;

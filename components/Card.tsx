@@ -1,24 +1,37 @@
-import React from "react";
-import styles from "../styles/home.module.css";
+import React, { ReactNode } from "react";
+import Link from "next/link";
 
-function CardContent(props: { title: string; description: string }) {
+import styles from "../styles/home.module.scss";
+
+const CardContent = (props: {
+  title: string;
+  description: string;
+  children?: ReactNode;
+}) => {
   return (
     <div>
       <h2>{props.title}</h2>
       <p>{props.description}</p>
+      {props.children}
     </div>
   );
-}
+};
 
 class Card extends React.Component<{ title: string; description: string; URL?: string }> {
   render() {
     return this.props.URL ? (
-      <a href={this.props.URL} className={styles.card}>
-        <CardContent title={this.props.title} description={this.props.description} />
-      </a>
+      <Link href={this.props.URL}>
+        <a className={"shadow-md " + styles.card}>
+          <CardContent title={this.props.title} description={this.props.description} />
+        </a>
+      </Link>
     ) : (
-      <div className={styles.card}>
-        <CardContent title={this.props.title} description={this.props.description} />
+      <div className={"shadow-md " + styles.card}>
+        <CardContent
+          title={this.props.title}
+          description={this.props.description}
+          children={this.props.children}
+        />
       </div>
     );
   }

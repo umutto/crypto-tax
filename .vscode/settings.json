@@ -1,4 +1,6 @@
 {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "cSpell.enabled": false
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "cSpell.enabled": false,
+  "css.lint.unknownAtRules": "ignore",
+  "scss.lint.unknownAtRules": "ignore"
 }

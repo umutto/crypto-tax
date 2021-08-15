@@ -9,7 +9,7 @@ export default class Footer extends React.Component {
       ? `mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}?subject=Inquiry about crypto tax calculator`
       : null;
     return (
-      <footer className="md:py-2 w-full border-t border-gray-200">
+      <footer className="w-full border-t border-gray-200 md:py-2 mt-6">
         <div className="flex mx-3 md:mx-5 my-1">
           <span className="flex flex-col md:flex-row flex-1 text-center items-center justify-center m-3 md:my-0">
             <span className="md:mx-1">

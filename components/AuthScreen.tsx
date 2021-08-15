@@ -1,9 +1,7 @@
 import { signIn } from "next-auth/client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { Header } from "../components";
-
-export function AuthScreen() {
+export default function AuthScreen() {
   return (
     <>
       <p className="text-gray-500 pt-10 pb-3 text-sm">You are not signed in.</p>

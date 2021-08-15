@@ -19,7 +19,7 @@ export default class Navbar extends React.Component {
 
   render() {
     return (
-      <nav className="flex w-full items-center border-b border-gray-200 shadow-sm p-1 md:p-3 mb-3 md:mb-6">
+      <nav className="flex w-full items-center border-b border-gray-200 shadow-sm p-1 md:p-3 mb-6">
         <Link href="/">
           <a className="inline-flex items-center p-2 mr-2 ">
             <img src="/polygon.png" className="mr-3 h-12 " />
@@ -38,24 +38,24 @@ export default class Navbar extends React.Component {
           }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}
         >
           <div className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto">
-            <Link href="/">
+            <Link href="/portfolio">
               <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded font-bold items-center justify-center hover:bg-blue-600 hover:text-white ">
-                Home
+                Portfolio
               </a>
             </Link>
-            <Link href="/">
+            <Link href="/report">
               <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded font-bold items-center justify-center hover:bg-blue-600 hover:text-white">
-                Services
+                Report
               </a>
             </Link>
-            <Link href="/">
+            <Link href="/stats">
               <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded font-bold items-center justify-center hover:bg-blue-600 hover:text-white">
-                About us
+                Stats
               </a>
             </Link>
-            <Link href="/">
+            <Link href="/sync">
               <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded font-bold items-center justify-center hover:bg-blue-600 hover:text-white">
-                Contact us
+                Sync
               </a>
             </Link>
             <Link href="/api/auth/signout">
