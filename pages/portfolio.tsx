@@ -34,5 +34,3 @@ export default function Portfolio() {
     </Layout>
   );
 }
-
-Portfolio.requireAuth = true;

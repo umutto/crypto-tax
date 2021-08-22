@@ -11,6 +11,7 @@ import aws from "aws-sdk";
  * Label?: string (airdrop)
  * Description?: string (cid_0000000)
  * TxHash?: string (AEGBABAEBEAHGAHE)
+ * Wallet?: string (coincheck)
  */
 
 const client = new aws.DynamoDB.DocumentClient({

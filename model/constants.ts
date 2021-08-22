@@ -8,6 +8,7 @@ export interface ITransaction {
   label?: string;
   description?: string;
   txHash?: string;
+  wallet?: string;
 }
 
 export interface ICache {

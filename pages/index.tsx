@@ -16,9 +16,12 @@ export default function Home() {
         {session && (
           <div className="pt-3">
             <p className="text-xl text-center">
-              Hope you have a <span className="font-bold text-green-500">green</span> day!
-              If it's <span className="font-bold text-red-500">red</span>, just chill I
-              guess.
+              You have made <span className="font-bold text-green-500">{100}</span>{" "}
+              transactions this year. Your last sync was on{" "}
+              <span className="font-bold text-pink-500">
+                {new Date().toLocaleDateString()}
+              </span>
+              .
             </p>
             <div className={styles.grid}>
               <Card
@@ -37,7 +40,7 @@ export default function Home() {
                 URL="/stats"
               ></Card>
               <Card
-                title="Re-sync &rarr;"
+                title="Sync &rarr;"
                 description="Sync your transaction data using a csv or API calls."
                 URL="/sync"
               ></Card>
@@ -48,3 +51,5 @@ export default function Home() {
     </Layout>
   );
 }
+
+Home.skipAuth = true;

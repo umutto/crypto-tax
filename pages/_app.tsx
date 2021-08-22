@@ -8,12 +8,12 @@ import "../utils/font-awesome";
 export default function App({ Component, pageProps }: any) {
   return (
     <Provider session={pageProps.session}>
-      {Component.requireAuth ? (
+      {Component.skipAuth ? (
+        <Component {...pageProps} />
+      ) : (
         <AuthGuard>
           <Component {...pageProps} />
         </AuthGuard>
-      ) : (
-        <Component {...pageProps} />
       )}
     </Provider>
   );

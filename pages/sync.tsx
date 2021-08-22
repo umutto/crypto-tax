@@ -1,41 +1,8 @@
-import React from "react";
-import { useDropzone } from "react-dropzone";
 import { Layout } from "../layouts";
-import { Card } from "../components";
+import { Card, Dropzone } from "../components";
 
 import styles from "../styles/home.module.scss";
-
-function Dropzone() {
-  const { acceptedFiles, fileRejections, getRootProps, getInputProps } = useDropzone({
-    accept: ".csv",
-    maxFiles: 1,
-  });
-
-  const files = acceptedFiles.map((file) => (
-    <span key={file.name}>
-      <span className="font-bold">File: </span>
-      {file.name} - {file.size} bytes
-    </span>
-  ));
-
-  return (
-    <section className="container p-5">
-      <div
-        {...getRootProps({
-          className:
-            "flex flex-col items-center p-5 border-2 border-yellow-200 border-dashed bg-yellow-50 cursor-pointer hover:border-blue-200",
-        })}
-      >
-        <input {...getInputProps()} />
-        <p>Drag 'n' drop some files here, or click to select files</p>
-        <em className="text-xs">(Only *.csv files will be accepted)</em>
-      </div>
-      <aside>
-        <div className="text-center">{files}</div>
-      </aside>
-    </section>
-  );
-}
+import React from "react";
 
 export default function Sync() {
   return (
@@ -56,8 +23,9 @@ export default function Sync() {
             </Card>
 
             <Card
-              title="API"
+              title="API [*WIP]"
               description="Add new transactions using API calls. Currently only Binance API is supported."
+              className={styles.disabled}
             ></Card>
 
             <Card

@@ -17,16 +17,26 @@ const CardContent = (props: {
   );
 };
 
-class Card extends React.Component<{ title: string; description: string; URL?: string }> {
+class Card extends React.Component<{
+  title: string;
+  description: string;
+  URL?: string;
+  className?: string;
+}> {
   render() {
+    const classNames =
+      "shadow-md " +
+      styles.card +
+      (this.props.className ? " " + this.props.className : "");
+
     return this.props.URL ? (
       <Link href={this.props.URL}>
-        <a className={"shadow-md " + styles.card}>
+        <a className={classNames}>
           <CardContent title={this.props.title} description={this.props.description} />
         </a>
       </Link>
     ) : (
-      <div className={"shadow-md " + styles.card}>
+      <div className={classNames}>
         <CardContent
           title={this.props.title}
           description={this.props.description}

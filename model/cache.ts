@@ -15,6 +15,7 @@ const fetchData = async (lastFetchDate?: string): Promise<ITransaction[]> => {
       label: "transaction",
       description: "monthly dca",
       txHash: "0000155648498762513asd",
+      wallet: "coincheck",
     },
   ];
 };

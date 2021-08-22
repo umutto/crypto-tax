@@ -1,11 +1,39 @@
-import { EOL } from "os";
-import { parse } from "@fast-csv/parse";
+import Papa, { ParseError } from "papaparse";
+import { ITransaction } from "./";
 
-export default function parseCsv(path: string) {
-  //     const stream = parse({ headers: true })
-  //     .on('error', error => console.error(error))
-  //     .on('data', row => console.log(row))
-  //     .on('end', (rowCount: number) => console.log(`Parsed ${rowCount} rows`));
-  // stream.write(CSV_STRING);
-  // stream.end();
+const convertCsvToTransaction = (csv: Record<string, string>[]): ITransaction[] => {
+  const transactions: ITransaction[] = [];
+  csv.forEach((r) => {
+    const transaction: ITransaction = {
+      currencyPair: r["Sent Currency"] + "#" + r["Received Currency"],
+      transactionDate: (new Date(r["Date"]).getTime() / 1000).toString(),
+      sentAmount: parseFloat(r["Sent Amount"]),
+      receivedAmount: parseFloat(r["Received Amount"]),
+      ...(r["Fee Amount"] && { feeAmount: parseFloat(r["Fee Amount"]) }),
+      ...(r["Fee Currency"] && { feeCurrency: r["Fee Currency"] }),
+      ...(r["Label"] && { label: r["Label"] }),
+      ...(r["Description"] && { description: r["Description"] }),
+      ...(r["TxHash"] && { txHash: r["TxHash"] }),
+      ...(r["Wallet"] && { wallet: r["Wallet"] }),
+    };
+    transactions.push(transaction);
+  });
+  return transactions;
+};
+
+export default async function parseCsv(
+  file: File,
+  onSuccess = (r: ITransaction[]) => {},
+  onError = (e: ParseError) => {}
+) {
+  return Papa.parse(file, {
+    header: true,
+    skipEmptyLines: true,
+    error: function (err) {
+      onError(err);
+    },
+    complete: function (results) {
+      onSuccess(convertCsvToTransaction(results.data as Record<string, string>[]));
+    },
+  });
 }
