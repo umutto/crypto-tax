@@ -29,10 +29,9 @@ export function Dropzone() {
 
   const files = acceptedFiles.map((file) => (
     <span key={file.name}>
-      <strong>File: </strong>
       {file.name} - {file.size} bytes.
       <span>
-        {" "}
+        <br />
         Found <strong>{rowCount}</strong> rows.
       </span>
     </span>
@@ -66,20 +65,22 @@ export function Dropzone() {
         )}
         <em className="text-xs">(Only *.csv files will be accepted)</em>
       </div>
-      <aside>
-        <div className="text-center">{files}</div>
-      </aside>
-      {rowCount > 0 ? (
-        <div className="flex justify-center md:justify-end">
-          <button
-            onClick={handleClick}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5 p-2"
-          >
-            <FontAwesomeIcon icon={["fas", "sync-alt"]} fixedWidth className="mr-2" />
-            Sync to Database
-          </button>
-        </div>
-      ) : null}
+      <div className="flex flex-col md:flex-row gap-4 mt-3 items-center align-center justify-center">
+        <aside className="flex">
+          <div className="text-center">{files}</div>
+        </aside>
+        {rowCount > 0 ? (
+          <div className="flex align-center justify-center">
+            <button
+              onClick={handleClick}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded p-2"
+            >
+              <FontAwesomeIcon icon={["fas", "sync-alt"]} fixedWidth className="mr-2" />
+              Sync to Database
+            </button>
+          </div>
+        ) : null}
+      </div>
     </section>
   );
 }

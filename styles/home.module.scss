@@ -7,8 +7,7 @@
   flex-wrap: wrap;
   max-width: 800px;
   height: 100%;
-  margin-top: 3rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 
   .card {
     margin: 1rem;
@@ -23,19 +22,24 @@
     width: 45%;
 
     &.disabled {
-      pointer-events: none;
-      cursor: not-allowed;
-      opacity: 0.5;
+      cursor: not-allowed !important;
+      opacity: 0.7;
+
+      &:hover {
+        border-color: #eaeaea;
+      }
     }
   }
 
   &.full {
     width: 100%;
+    max-width: unset;
     flex-direction: column;
     align-items: center;
 
     .card {
       width: 85%;
+      max-width: 800px;
     }
   }
 
@@ -48,6 +52,17 @@
     .card {
       width: 85%;
     }
+  }
+}
+
+.bg-moon {
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  background-size: 720px 400px;
+
+  @media (max-width: 767px) {
+    background-size: unset;
+    background-position: bottom center;
   }
 }
 
@@ -69,4 +84,60 @@
 .logo {
   height: 1em;
   margin-left: 0.5rem;
+}
+
+.theme-toggle {
+  @media (min-width: 768px) {
+    position: relative;
+    float: right;
+
+    label {
+      position: absolute;
+      top: 45px;
+      right: -90px;
+    }
+  }
+
+  .dot {
+    background-color: #fff;
+
+    .icon-light {
+      display: none;
+    }
+    .icon-dark {
+      display: block;
+    }
+  }
+  .block {
+    border: solid 1px #fff;
+    background-color: rgb(17, 24, 39);
+  }
+
+  &:hover {
+    .dot {
+      color: rgb(240, 206, 71) !important;
+    }
+    .block {
+      border-color: rgb(240, 206, 71) !important;
+    }
+  }
+
+  input {
+    &:checked ~ .dot {
+      transform: translateX(100%);
+      background-color: rgb(17, 24, 39);
+      color: #fff;
+
+      .icon-light {
+        display: block;
+      }
+      .icon-dark {
+        display: none;
+      }
+    }
+    &:checked ~ .block {
+      border-color: rgb(17, 24, 39);
+      background-color: #fff;
+    }
+  }
 }

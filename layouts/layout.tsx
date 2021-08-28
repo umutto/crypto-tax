@@ -1,12 +1,32 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC, ReactNode, useEffect } from "react";
 import Head from "next/head";
 
 import { Loader, Navbar } from "../components";
 import { Footer } from "../components";
 import { useSession } from "next-auth/client";
 
+import styles from "../styles/home.module.scss";
+
 export default function Layout({ children }: { children: ReactNode }) {
   const [session, loading] = useSession();
+
+  useEffect(() => {
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+      localStorage.theme = "dark";
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.theme = "light";
+    }
+
+    // localStorage.theme = "light";
+    // localStorage.theme = "dark";
+    // localStorage.removeItem("theme");
+  });
 
   return (
     <>
@@ -23,9 +43,17 @@ export default function Layout({ children }: { children: ReactNode }) {
             <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
             <link rel="manifest" href="/site.webmanifest" />
           </Head>
-          <div className="min-h-screen flex flex-col items-center">
+          <div
+            className={
+              styles["bg-moon"] +
+              " min-h-screen flex flex-col items-center bg-white dark:bg-gray-900"
+            }
+            style={{
+              backgroundImage: "url(/images/undraw_moonlight_5ksn.svg)",
+            }}
+          >
             {session && <Navbar></Navbar>}
-            <main className="flex flex-1 flex-col justify-center items-center">
+            <main className="flex flex-1 flex-col w-full justify-center items-center">
               {children}
             </main>
             <Footer></Footer>

@@ -9,9 +9,13 @@ export default function Sync() {
     <Layout>
       <>
         <div className="pt-3">
-          <p className="text-xl text-center">
-            You can use a csv file, use the Binance API or sync your file cache with the
-            DynamoDB.
+          <p className="text-xl text-center mb-5">
+            You can upload a <span className="text-blue-600 font-bold">csv</span> file or
+            use the Binance <span className="text-blue-600 font-bold">API</span> to
+            register new transactions on database.
+            <br />
+            Or <span className="text-blue-600 font-bold">sync</span> your file cache from
+            database.
           </p>
 
           <div className={styles.grid + " " + styles.full}>

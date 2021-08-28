@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 
+import { Toggler } from ".";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class Footer extends React.Component {
@@ -9,7 +11,7 @@ export default class Footer extends React.Component {
       ? `mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}?subject=Inquiry about crypto tax calculator`
       : null;
     return (
-      <footer className="w-full border-t border-gray-300 md:py-2 mt-6">
+      <footer className="w-full border-t bg-gray-50 border-gray-300 md:py-2 mt-8 md:mt-2">
         <div className="flex mx-3 md:mx-5 my-1">
           <span className="flex flex-col md:flex-row flex-1 text-center items-center justify-center m-3 md:my-0">
             <span className="md:mx-1">
@@ -28,7 +30,7 @@ export default class Footer extends React.Component {
               </a>
             </span>
           </span>
-          <div className="flex md:mr-2">
+          <div className="flex md:mr-2 my-4 md:my-0">
             <div className="grid grid-cols-2 mx-0 gap-x-3">
               <a
                 className={`col-span-2 ${

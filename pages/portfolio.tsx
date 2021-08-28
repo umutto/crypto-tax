@@ -19,7 +19,7 @@ export default function Portfolio() {
   return (
     <Layout>
       <div className="pt-3">
-        <p className="text-2xl text-center">Here are your tracked currencies.</p>
+        <p className="text-2xl text-center mb-5">Here are your tracked currencies.</p>
 
         <div className={styles.grid}>
           {getCoinCards().map((c, i) => (

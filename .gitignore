@@ -35,3 +35,7 @@ yarn-error.log*
 
 # local data cache
 .cache
+
+# local junk
+.local_only/
+.local_*.md
