@@ -1,10 +1,34 @@
-$color-primary: #0070f3;
-$color-danger: #dc3545;
-$color-warning: #ffc107;
-$color-success: #0fcc52;
-
 $grid-breakpoints-sm: 640px;
 $grid-breakpoints-md: 768px;
 $grid-breakpoints-lg: 1024px;
 $grid-breakpoints-xl: 1280px;
 $grid-breakpoints-xxl: 1536px;
+
+$color-primary: #0070f3;
+$color-danger: #dc3545;
+$color-warning: #ffc107;
+$color-success: #0fcc52;
+$color-trivial: #eaeaea;
+$color-light: #fafafa;
+$color-dark: #3d3d3d;
+
+// $themes: (
+//   dark: (
+//     "color-primary": #0070f3,
+//     "color-danger": #dc3545,
+//     "color-warning": #ffc107,
+//     "color-success": #0fcc52,
+//     "color-trivial": #3d3d3d,
+//     "color-light": #1f1f1f,
+//     "color-dark": #fff,
+//   ),
+//   light: (
+//     "color-primary": #0070f3,
+//     "color-danger": #dc3545,
+//     "color-warning": #ffc107,
+//     "color-success": #0fcc52,
+//     "color-trivial": #eaeaea,
+//     "color-light": #fafafa,
+//     "color-dark": #000,
+//   ),
+// );

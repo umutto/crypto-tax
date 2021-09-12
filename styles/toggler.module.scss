@@ -1,0 +1,58 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.theme-toggle {
+  @media (min-width: $grid-breakpoints-md) {
+    position: relative;
+    float: right;
+
+    label {
+      position: absolute;
+      top: 50px;
+      right: -85px;
+    }
+  }
+
+  .dot {
+    background-color: #fff;
+
+    .icon-light {
+      display: none;
+    }
+    .icon-dark {
+      display: block;
+    }
+  }
+  .block {
+    border: solid 1px #fff;
+    background-color: rgb(17, 24, 39);
+  }
+
+  &:hover {
+    .dot {
+      color: rgb(240, 206, 71) !important;
+    }
+    .block {
+      border-color: rgb(240, 206, 71) !important;
+    }
+  }
+
+  input {
+    &:checked ~ .dot {
+      transform: translateX(100%);
+      background-color: rgb(17, 24, 39);
+      color: #fff;
+
+      .icon-light {
+        display: block;
+      }
+      .icon-dark {
+        display: none;
+      }
+    }
+    &:checked ~ .block {
+      border-color: rgb(17, 24, 39);
+      background-color: #fff;
+    }
+  }
+}

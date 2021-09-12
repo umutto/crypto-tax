@@ -8,7 +8,7 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import styles from "../styles/home.module.scss";
+import styles from "../styles/toggler.module.scss";
 
 const toggleTheme = () => {
   if (localStorage.theme === "dark") {
@@ -25,9 +25,9 @@ export default function Toggler() {
     <div className={styles["theme-toggle"] + " relative w-full px-3 pt-1 pb-2 md:p-0"}>
       <label
         htmlFor="toggleTheme"
-        className="cursor-pointer flex items-center w-full md:w-auto"
+        className="cursor-pointer flex items-center justify-between w-full md:w-auto"
       >
-        <div className="font-bold mr-2 md:hidden">Dark mode</div>
+        <div className="font-bold mr-2 md:hidden dark:text-white">Dark mode</div>
         <div className="relative">
           <input
             type="checkbox"

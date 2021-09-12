@@ -9,6 +9,7 @@ module.exports = {
         transparent: "transparent",
         current: "currentColor",
         blue: colors.sky,
+        gray: colors.trueGray,
       },
     },
   },

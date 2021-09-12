@@ -59,11 +59,13 @@ export function Dropzone() {
       >
         <input {...getInputProps()} />
         {isDragActive ? (
-          <p>Drop the files here ...</p>
+          <p className="text-black">Drop the files here ...</p>
         ) : (
-          <p>Drag 'n' drop some files here, or click to select files</p>
+          <p className="text-black">
+            Drag 'n' drop some files here, or click to select files
+          </p>
         )}
-        <em className="text-xs">(Only *.csv files will be accepted)</em>
+        <em className="text-xs text-black">(Only *.csv files will be accepted)</em>
       </div>
       <div className="flex flex-col md:flex-row gap-4 mt-3 items-center align-center justify-center">
         <aside className="flex">
@@ -73,7 +75,7 @@ export function Dropzone() {
           <div className="flex align-center justify-center">
             <button
               onClick={handleClick}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded p-2"
+              className="bg-blue-500 hover:bg-white hover:text-blue-500 text-white border-blue-500 border-2 dark:border-gray-900 dark:bg-gray-900 dark:hover:bg-white dark:hover:text-gray-900 font-bold py-2 px-4 rounded p-2"
             >
               <FontAwesomeIcon icon={["fas", "sync-alt"]} fixedWidth className="mr-2" />
               Sync to Database

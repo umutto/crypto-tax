@@ -9,7 +9,7 @@ export default NextAuth({
       scope: ["https://www.googleapis.com/auth/userinfo.profile"].join(" "),
     }),
   ],
-
+  theme: "auto",
   callbacks: {
     async signIn(user, account, profile) {
       return true;

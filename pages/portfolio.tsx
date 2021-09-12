@@ -17,9 +17,11 @@ import { getCoinCards } from "../utils/common";
 
 export default function Portfolio() {
   return (
-    <Layout>
+    <Layout background="rocket">
       <div className="pt-3">
-        <p className="text-2xl text-center mb-5">Here are your tracked currencies.</p>
+        <p className="text-2xl dark:text-white text-center mb-5">
+          Here are your tracked currencies.
+        </p>
 
         <div className={styles.grid}>
           {getCoinCards().map((c, i) => (

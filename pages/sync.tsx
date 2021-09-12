@@ -6,15 +6,15 @@ import React from "react";
 
 export default function Sync() {
   return (
-    <Layout>
+    <Layout background="moon">
       <>
         <div className="pt-3">
-          <p className="text-xl text-center mb-5">
-            You can upload a <span className="text-blue-600 font-bold">csv</span> file or
-            use the Binance <span className="text-blue-600 font-bold">API</span> to
+          <p className="text-xl text-center dark:text-white mb-5">
+            You can upload a <span className="text-pink-500 font-bold">csv</span> file or
+            use the Binance <span className="text-pink-500 font-bold">API</span> to
             register new transactions on database.
             <br />
-            Or <span className="text-blue-600 font-bold">sync</span> your file cache from
+            Or <span className="text-pink-500 font-bold">sync</span> your file cache from
             database.
           </p>
 
@@ -28,7 +28,7 @@ export default function Sync() {
 
             <Card
               title="API [*WIP]"
-              description="Add new transactions using API calls. Currently only Binance API is supported."
+              description="Add new transactions using API calls. Currently, only works with Binance API."
               className={styles.disabled}
             ></Card>
 

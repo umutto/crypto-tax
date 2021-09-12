@@ -3,7 +3,6 @@ import { useSession } from "next-auth/client";
 import { Layout } from "../layouts";
 import { AuthScreen, Card, Welcome } from "../components";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { formatDistance } from "date-fns";
 
 import styles from "../styles/home.module.scss";
@@ -12,13 +11,13 @@ export default function Home() {
   const [session] = useSession();
 
   return (
-    <Layout>
+    <Layout background="moon">
       <>
         <Welcome user={session?.user}></Welcome>
         {!session && <AuthScreen></AuthScreen>}
         {session && (
           <div className="pt-3">
-            <p className="text-xl text-center mb-5">
+            <p className="text-xl text-center dark:text-white mb-5">
               You have made <span className="font-bold text-green-500">{100}</span>{" "}
               transactions this year. Your last sync was{" "}
               <span className="font-bold text-pink-500">

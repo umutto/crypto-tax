@@ -1,4 +1,5 @@
 @use 'variables' as *;
+@use 'mixins' as *;
 
 @tailwind base;
 @tailwind components;
@@ -19,9 +20,44 @@ a {
 
   &:hover {
     color: $color-primary;
+    .dark & {
+      color: $color-warning;
+    }
   }
 }
 
 * {
   box-sizing: border-box;
+}
+
+.bg-rocket {
+  background-image: url("/images/undraw_upgrade_06a0.svg");
+
+  background-position: bottom 22px right -20vw;
+  background-repeat: no-repeat;
+  background-size: 70vw 40vw;
+
+  @media (max-width: $grid-breakpoints-md - 1px) {
+    background-position: bottom 60px right -150px;
+    background-size: 600px 350px;
+  }
+  @media (max-width: $grid-breakpoints-sm - 1px) {
+    background-position: bottom 80px right -200px;
+  }
+}
+
+.bg-moon {
+  background-image: url("/images/undraw_moonlight_5ksn.svg");
+
+  background-position: bottom 48px right;
+  background-repeat: no-repeat;
+  background-size: 60vw 30vw;
+
+  @media (max-width: $grid-breakpoints-md - 1px) {
+    background-size: 140vw 70vw;
+    background-position: bottom 80px right;
+  }
+  @media (max-width: $grid-breakpoints-sm - 1px) {
+    background-position: bottom 96px right;
+  }
 }
