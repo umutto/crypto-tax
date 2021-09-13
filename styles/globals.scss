@@ -30,6 +30,10 @@ a {
   box-sizing: border-box;
 }
 
+.mh-s-100 {
+  min-height: 100vh;
+}
+
 .static-bg {
   background-repeat: no-repeat;
   background-attachment: fixed;
