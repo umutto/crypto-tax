@@ -26,6 +26,7 @@ export default function Portfolio() {
         <div className={styles.grid}>
           {getCoinCards().map((c, i) => (
             <Card
+              key={i}
               title={`${c.name} (${c.ticker.toUpperCase()})`}
               description={c.description}
               URL={c.URL}

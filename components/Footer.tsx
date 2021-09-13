@@ -23,7 +23,7 @@ export default class Footer extends React.Component {
               <a
                 href="https://github.com/umutto/crypto-tax-calculator"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 title="Source on Github"
               >
                 <u className="mx-1">source on github.</u>
@@ -38,7 +38,7 @@ export default class Footer extends React.Component {
                 } flex items-center`}
                 href="https://github.com/umutto"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 title="Github Profile"
               >
                 <FontAwesomeIcon

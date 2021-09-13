@@ -17,7 +17,11 @@ export default class Welcome extends React.Component<{
       </div>
     ) : (
       <div className="flex flex-col md:flex-row items-center justify-center">
-        <img src="/polygon.png" className="md:mr-5 h-32 md:h-48" />
+        <img
+          src="/polygon.png"
+          className="md:mr-5 h-32 md:h-48"
+          alt="Crypto Tax Calculator"
+        />
         <h1 className="text-6xl m-0 text-center dark:text-white">
           <span className="text-blue-600 dark:text-blue-400 font-bold">Crypto</span> Tax
           Calculator

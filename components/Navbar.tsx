@@ -24,7 +24,7 @@ export default class Navbar extends React.Component {
         <div className="flex w-full items-center">
           <Link href="/">
             <a className="inline-flex items-center p-2 mr-2">
-              <img src="/polygon.png" className="mr-2 h-11" />
+              <img src="/polygon.png" className="mr-2 h-11" alt="Crypto Tax Calculator" />
               <span className="md:text-3xl font-bold uppercase text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-600">
                 Crypto Tax Calculator
               </span>

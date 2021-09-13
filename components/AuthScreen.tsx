@@ -4,11 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function AuthScreen() {
   return (
     <>
-      <p className="text-gray-500 dark:text-gray-100 pt-10 pb-2 text-sm">
-        You are not signed in.
-      </p>
       <button
-        className="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded shadow"
+        className="bg-white hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded shadow mt-14"
         type="button"
         onClick={() => signIn("google")}
       >

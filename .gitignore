@@ -33,6 +33,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# nextjs
+report.*.json
+
 # local data cache
 .cache
 

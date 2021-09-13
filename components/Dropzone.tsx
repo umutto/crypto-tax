@@ -71,7 +71,7 @@ export function Dropzone() {
           <p className="text-black">Drop the files here ...</p>
         ) : (
           <p className="text-black">
-            Drag 'n' drop some files here, or click to select files
+            Drag &#39;n&#39; drop some files here, or click to select files
           </p>
         )}
         <em className="text-xs text-black">(Only *.csv files will be accepted)</em>
