@@ -14,7 +14,6 @@ export default function Home() {
     <Layout background={session ? "adventure" : "moon"}>
       <>
         <Welcome user={session?.user}></Welcome>
-        {!session && <AuthScreen></AuthScreen>}
         {session && (
           <div className="pt-3">
             <p className="text-xl text-center dark:text-white mb-5">

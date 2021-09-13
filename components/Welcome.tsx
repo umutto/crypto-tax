@@ -1,4 +1,5 @@
 import React from "react";
+import AuthScreen from "./AuthScreen";
 
 export default class Welcome extends React.Component<{
   user?: Record<string, string | null | undefined>;
@@ -16,17 +17,20 @@ export default class Welcome extends React.Component<{
         </div>
       </div>
     ) : (
-      <div className="flex flex-col md:flex-row items-center justify-center">
-        <img
-          src="/polygon.png"
-          className="md:mr-5 h-32 md:h-48"
-          alt="Crypto Tax Calculator"
-        />
-        <h1 className="text-6xl m-0 text-center dark:text-white">
-          <span className="text-blue-600 dark:text-blue-400 font-bold">Crypto</span> Tax
-          Calculator
-        </h1>
-      </div>
+      <>
+        <div className="flex flex-col md:flex-row items-center justify-center">
+          <img
+            src="/polygon.png"
+            className="md:mr-5 h-32 md:h-48 mt-5 md:mt-0"
+            alt="Crypto Tax Calculator"
+          />
+          <h1 className="text-6xl m-0 text-center dark:text-white">
+            <span className="text-blue-600 dark:text-blue-400 font-bold">Crypto</span> Tax
+            Calculator
+          </h1>
+        </div>
+        {!this.props.user && <AuthScreen></AuthScreen>}
+      </>
     );
   }
 }
