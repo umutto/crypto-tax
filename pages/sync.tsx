@@ -6,7 +6,7 @@ import React from "react";
 
 export default function Sync() {
   return (
-    <Layout background="moon">
+    <Layout background="connect">
       <>
         <div className="pt-3">
           <p className="text-xl text-center dark:text-white mb-5">

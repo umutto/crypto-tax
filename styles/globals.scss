@@ -30,32 +30,82 @@ a {
   box-sizing: border-box;
 }
 
+.static-bg {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 .bg-rocket {
   background-image: url("/images/undraw_upgrade_06a0.svg");
 
-  background-position: bottom 22px right -20vw;
-  background-repeat: no-repeat;
-  background-size: 70vw 40vw;
+  background-position: bottom 22px right -100px;
+  background-size: 800px 580px;
 
   @media (max-width: $grid-breakpoints-md - 1px) {
-    background-position: bottom 60px right -150px;
-    background-size: 600px 350px;
+    background-position: bottom 60px right -200px;
   }
   @media (max-width: $grid-breakpoints-sm - 1px) {
-    background-position: bottom 80px right -200px;
+    background-position: bottom 80px right -150px;
+    background-size: 523px 360px;
   }
 }
 
 .bg-moon {
   background-image: url("/images/undraw_moonlight_5ksn.svg");
+  background-attachment: initial !important;
 
   background-position: bottom 48px right;
-  background-repeat: no-repeat;
-  background-size: 60vw 30vw;
+  background-size: min(95vw, 1013px) auto;
 
   @media (max-width: $grid-breakpoints-md - 1px) {
-    background-size: 140vw 70vw;
     background-position: bottom 80px right;
+  }
+  @media (max-width: $grid-breakpoints-sm - 1px) {
+    background-position: bottom 90px right -80vw;
+    background-size: min(180vw, 1013px) auto;
+  }
+}
+
+.bg-adventure {
+  background-image: url("/images/undraw_adventure_map_hnin.svg");
+
+  background-position: bottom -60px right calc(-50px + -5vw);
+  background-size: 832px 646px;
+
+  @media (max-width: $grid-breakpoints-md - 1px) {
+    background-size: 624px 484px;
+    background-position: bottom right calc(-50px + -5vw);
+  }
+  @media (max-width: $grid-breakpoints-sm - 1px) {
+    background-position: bottom right -100px;
+  }
+}
+
+.bg-connect {
+  background-image: url("/images/undraw_server_status_5pbv.svg");
+
+  background-position: bottom -5vh right -5vw;
+  background-size: 791px 580px;
+
+  @media (max-width: $grid-breakpoints-md - 1px) {
+    background-size: 525px 385px;
+    background-position: bottom right -10vw;
+  }
+  @media (max-width: $grid-breakpoints-sm - 1px) {
+    background-size: 100vw auto;
+    background-position: bottom -5vw right -5vw;
+  }
+}
+
+.bg-stats {
+  background-image: url("/images/undraw_visual_data_re_mxxo.svg");
+
+  background-position: bottom 48px right -10vw;
+  background-repeat: no-repeat;
+  background-size: 821px 687px;
+
+  @media (max-width: $grid-breakpoints-md - 1px) {
+    background-position: bottom 80px right -10vw;
   }
   @media (max-width: $grid-breakpoints-sm - 1px) {
     background-position: bottom 96px right;
