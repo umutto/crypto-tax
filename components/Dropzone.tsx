@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";
+import { totalAverage, transactionStats } from "../lib";
 import { parseCsv } from "../model";
 
 export function Dropzone() {
@@ -22,7 +23,15 @@ export function Dropzone() {
       parseCsv(acceptedFiles[0], (rows) => {
         dataRef.current = rows;
         setRowCount(rows.length);
-        console.log(rows);
+
+        // temporarily print the results to console
+        const summary = totalAverage(rows);
+        const stats = transactionStats(summary);
+        console.log("Transaction Summary Per Coin:");
+        console.log(summary);
+        console.log("Transaction Stats:");
+        console.log(stats);
+        // temporarily print the results to console
       });
     }, []),
   });
