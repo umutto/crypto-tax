@@ -45,7 +45,7 @@ export default function Layout({
           </Head>
           <div
             className={
-              "min-h-screen mh-s-100 flex flex-col items-center bg-white dark:bg-gray-900" +
+              "min-h-screen flex flex-col items-center bg-white dark:bg-gray-900" +
               (background ? " " + `static-bg bg-${background}` : "")
             }
           >
