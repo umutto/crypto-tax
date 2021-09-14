@@ -1,0 +1,48 @@
+@use 'sass:math';
+/* Pure SCSS glitch effect from https://codepen.io/lukemeyrick/pen/ayRgWO */
+
+$steps: 50;
+.text-cray {
+  outline: none;
+  font-family: "Roboto", monospace;
+
+  &,
+  * {
+    animation: cray 6s infinite steps($steps);
+    display: inline-block;
+  }
+}
+
+@keyframes cray {
+  @for $i from 1 to $steps {
+    $per: math.div(100%, $steps) * $i;
+    $weight: (100, 200, 300, 400, 500, 600, 700);
+    $style: (normal, italic, normal, normal);
+    $decor: (none, none, line-through, underline, none, none, none);
+    $trans: (
+      none,
+      none,
+      uppercase,
+      lowercase,
+      capitalize,
+      none,
+      none,
+      none,
+      none,
+      none,
+      none
+    );
+
+    $arrayW: random(7);
+    $arrayS: random(4);
+    $arrayD: random(7);
+    $arrayT: random(11);
+
+    #{$per} {
+      font-weight: nth($weight, $arrayW);
+      font-style: nth($style, $arrayS);
+      text-decoration: nth($decor, $arrayD);
+      text-transform: nth($trans, $arrayT);
+    }
+  }
+}

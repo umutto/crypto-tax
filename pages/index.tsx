@@ -11,12 +11,12 @@ export default function Home() {
   const [session] = useSession();
 
   return (
-    <Layout background={session ? "adventure" : "moon"}>
+    <Layout background={session ? "adventure" : ["wave-anim", "moon"]}>
       <>
         <Welcome user={session?.user}></Welcome>
         {session && (
           <div className="pt-3">
-            <p className="text-xl text-center dark:text-white mb-5">
+            <p className="text-xl text-center dark:text-white mb-5 text-shadow-crypto">
               You have made <span className="font-bold text-green-500">{100}</span>{" "}
               transactions this year. Your last sync was{" "}
               <span className="font-bold text-pink-500">

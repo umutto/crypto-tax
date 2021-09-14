@@ -1,0 +1,9 @@
+@use 'variables' as *;
+
+.text-shadow-crypto {
+  text-shadow: 1px 1px 1px $color-trivial;
+
+  .dark & {
+    text-shadow: 1px 1px 1px $color-crypto;
+  }
+}

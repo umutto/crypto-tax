@@ -20,7 +20,7 @@ export default class Navbar extends React.Component {
 
   render() {
     return (
-      <nav className="flex md:flex-row flex-col w-full items-center border-b bg-gray-50 dark:bg-gray-800 border-gray-300 shadow-sm p-1 md:p-2 mb-6 md:mb-4">
+      <nav className="flex md:flex-row flex-col w-full items-center border-b bg-gray-50 dark:bg-gray-800 border-gray-300 shadow-sm p-1 md:p-2 mb-6 md:mb-4 z-10">
         <div className="flex w-full items-center">
           <Link href="/">
             <a className="inline-flex items-center p-2 mr-2">

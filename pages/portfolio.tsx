@@ -19,7 +19,7 @@ export default function Portfolio() {
   return (
     <Layout background="rocket">
       <div className="pt-3">
-        <p className="text-2xl dark:text-white text-center mb-5">
+        <p className="text-2xl dark:text-white text-center mb-5 text-shadow-crypto">
           Here are your tracked currencies.
         </p>
 

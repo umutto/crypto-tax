@@ -5,14 +5,39 @@ import { Loader, Navbar } from "../components";
 import { Footer } from "../components";
 import { useSession } from "next-auth/client";
 
+import Image from "next/image";
+
+export type BackgroundType =
+  | "moon"
+  | "rocket"
+  | "connect"
+  | "adventure"
+  | "stats"
+  | "wave-static"
+  | "wave-anim";
+
 export default function Layout({
   children,
   background,
 }: {
   children: ReactNode;
-  background?: "moon" | "rocket" | "connect" | "adventure" | "stats";
+  background?: Array<BackgroundType> | BackgroundType;
 }) {
   const [session, loading] = useSession();
+  const bg = {
+    moon: "/images/undraw_moonlight_5ksn.svg",
+    rocket: "/images/undraw_upgrade_06a0.svg",
+    connect: "/images/undraw_server_status_5pbv.svg",
+    adventure: "/images/undraw_adventure_map_hnin.svg",
+    stats: "/images/undraw_visual_data_re_mxxo.svg",
+    "wave-static": "/images/wave_drop.svg",
+    "wave-anim": "/images/wave_anim.svg",
+  };
+  const _background = background
+    ? Array.isArray(background)
+      ? background
+      : [background]
+    : undefined;
 
   useEffect(() => {
     if (
@@ -43,14 +68,22 @@ export default function Layout({
             <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
             <link rel="manifest" href="/site.webmanifest" />
           </Head>
-          <div
-            className={
-              "min-h-screen flex flex-col items-center bg-white dark:bg-gray-900" +
-              (background ? " " + `static-bg bg-${background}` : "")
-            }
-          >
+          <div className="min-h-screen flex flex-col items-center bg-white dark:bg-gray-900">
+            {_background &&
+              _background.length > 0 &&
+              _background.map((b, i) => (
+                <div key={i} className={`static-bg bg-${b}`}>
+                  <Image
+                    alt={b}
+                    src={bg[b]}
+                    layout="fill"
+                    objectFit="contain"
+                    quality={100}
+                  />
+                </div>
+              ))}
             {session && <Navbar></Navbar>}
-            <main className="flex flex-1 flex-col w-full justify-center items-center">
+            <main className="flex flex-1 flex-col w-full justify-center items-center z-1">
               {children}
             </main>
             <Footer></Footer>

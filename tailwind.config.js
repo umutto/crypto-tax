@@ -11,6 +11,10 @@ module.exports = {
         blue: colors.sky,
         gray: colors.trueGray,
       },
+      zIndex: {
+        1: 1,
+        "-1": -1,
+      },
     },
   },
   variants: {
