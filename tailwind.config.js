@@ -12,7 +12,7 @@ module.exports = {
         gray: colors.trueGray,
         grad: {
           dark: "#3f3d56",
-          light: "#fcfbf5",
+          light: "#fbfaf3",
         },
       },
       zIndex: {
@@ -20,7 +20,8 @@ module.exports = {
         "-1": -1,
       },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(circle at bottom, var(--tw-gradient-stops))",
+        "gradient-radial":
+          "radial-gradient(circle at bottom right, var(--tw-gradient-stops))",
       },
       keyframes: {
         subtle: {

@@ -49,7 +49,7 @@ export default function Layout({
       {loading ? (
         <Loader />
       ) : (
-        <div className="bg-white dark:bg-gray-900 ">
+        <>
           <Head>
             <title>Personal Crypto Tax Calculator</title>
             <meta name="description" content="Personal Crypto Tax Calculator" />
@@ -59,27 +59,29 @@ export default function Layout({
             <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
             <link rel="manifest" href="/site.webmanifest" />
           </Head>
-          <div className="main-wrapper min-h-screen flex flex-col items-center bg-gradient-radial from-grad-light dark:from-grad-dark animate-subtle md:animate-none">
-            {_background &&
-              _background.length > 0 &&
-              _background.map((b, i) => (
-                <div key={i} className={`static-bg bg-${b}`}>
-                  <Image
-                    alt={b}
-                    src={bg[b]}
-                    layout="fill"
-                    objectFit="contain"
-                    quality={100}
-                  />
-                </div>
-              ))}
-            {session && <Navbar></Navbar>}
-            <main className="flex flex-1 flex-col w-full justify-center items-center z-1">
-              {children}
-            </main>
-            <Footer></Footer>
+          <div className="bg-white dark:bg-gray-900 ">
+            <div className="main-wrapper min-h-screen flex flex-col items-center bg-gradient-radial from-grad-light dark:from-grad-dark animate-subtle md:animate-none">
+              {_background &&
+                _background.length > 0 &&
+                _background.map((b, i) => (
+                  <div key={i} className={`static-bg bg-${b}`}>
+                    <Image
+                      alt={b}
+                      src={bg[b]}
+                      layout="fill"
+                      objectFit="contain"
+                      quality={100}
+                    />
+                  </div>
+                ))}
+              {session && <Navbar></Navbar>}
+              <main className="flex flex-1 flex-col w-full justify-center items-center z-1">
+                {children}
+              </main>
+              <Footer></Footer>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );

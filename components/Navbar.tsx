@@ -3,6 +3,8 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Toggler } from ".";
 
+import LogoIcon from "../public/logo_icon.svg";
+
 export default class Navbar extends React.Component {
   toggleActive: () => void;
   state: Record<string, boolean>;
@@ -23,15 +25,12 @@ export default class Navbar extends React.Component {
       <nav className="flex md:flex-row flex-col w-full items-center border-b bg-gray-50 dark:bg-gray-800 border-gray-300 shadow-sm p-1 md:p-2 mb-6 md:mb-4 z-10">
         <div className="flex w-full items-center">
           <Link href="/">
-            <a className="inline-flex items-center p-2 mr-2">
-              <img
-                src="/logo_icon.png"
-                className="mr-3 md:mr-5 h-14 -my-4"
-                alt="Crypto Tax Calculator"
-              />
-              <span className="text-2xl md:text-3xl font-bold uppercase text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-green-600">
-                KrypTax
-              </span>
+            <a
+              className="inline-flex items-center p-2 mr-2 text-gray-900 hover:text-blue-600 dark:text-white dark:hover:text-blue-600"
+              title="Crypto Tax Calculator"
+            >
+              <LogoIcon className="mr-3 md:mr-5 h-14 w-14 -my-4" />
+              <span className="text-2xl md:text-3xl font-bold uppercase">KrypTax</span>
             </a>
           </Link>
           <button

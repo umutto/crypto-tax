@@ -1,6 +1,8 @@
 import React from "react";
 import AuthScreen from "./AuthScreen";
 
+import Logo from "../public/logo_transparent_fit.svg";
+
 export default class Welcome extends React.Component<{
   user?: Record<string, string | null | undefined>;
 }> {
@@ -19,11 +21,7 @@ export default class Welcome extends React.Component<{
     ) : (
       <>
         <div className="flex flex-col md:flex-row items-center justify-center">
-          <img
-            src="/logo_transparent_fit.png"
-            className="md:mr-5 h-44 md:h-60 mt-5 md:mt-0"
-            alt="Crypto Tax Calculator"
-          />
+          <Logo className="md:mr-5 h-44 md:h-60 mt-5 md:mt-0 text-blue-900 dark:text-gray-200" />
           <h1 className="text-6xl m-0 text-center dark:text-white text-shadow-crypto">
             <span className="text-blue-600 dark:text-blue-400 font-bold">Crypto</span> Tax
             Calculator

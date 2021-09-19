@@ -1,11 +1,3 @@
-// /* Toggle B */
-// input:checked ~ .dot {
-//     transform: translateX(100%);
-//   }
-//   input:checked ~ .block {
-//     background-color: #48bb78;
-//   }
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import styles from "../styles/toggler.module.scss";

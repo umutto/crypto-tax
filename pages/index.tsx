@@ -1,7 +1,7 @@
 import { useSession } from "next-auth/client";
 
 import { Layout } from "../layouts";
-import { AuthScreen, Card, Welcome } from "../components";
+import { Card, Welcome } from "../components";
 
 import { formatDistance } from "date-fns";
 
