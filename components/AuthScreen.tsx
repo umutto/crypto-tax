@@ -17,7 +17,7 @@ export default function AuthScreen() {
         interested to set up your own, you can check the source on{" "}
         <a
           className="text-blue-500 hover:text-blue-700"
-          href="https://github.com/umutto/crypto-tax-calculator"
+          href="https://github.com/umutto/crypto-tax"
           target="_blank"
           rel="noopener noreferrer"
         >

@@ -1,11 +1,13 @@
 {
-  "name": "crypto-tax-calculator",
+  "name": "crypto-tax",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p 5002",
+    "deploy_setup": "pm2 deploy production setup",
+    "deploy": "pm2 deploy ecosystem.config.js production --force"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
