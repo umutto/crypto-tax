@@ -1,7 +1,11 @@
 import { useSession } from "next-auth/client";
+import dynamic from "next/dynamic";
 
-import { Layout } from "../layouts";
-import { Card, Welcome } from "../components";
+import { Loader } from "../components";
+
+const Layout = dynamic(() => import("../layouts/Layout"), { loading: Loader });
+const Card = dynamic(() => import("../components/Card"), { loading: Loader });
+const Welcome = dynamic(() => import("../components/Welcome"), { loading: Loader });
 
 import { formatDistance } from "date-fns";
 

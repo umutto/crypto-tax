@@ -4,7 +4,7 @@ import { useDropzone } from "react-dropzone";
 import { totalAverage, transactionStats } from "../lib";
 import { parseCsv } from "../model";
 
-export function Dropzone() {
+export default function Dropzone() {
   const [rowCount, setRowCount] = useState(0);
   let dataRef = useRef({});
 

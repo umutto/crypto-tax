@@ -1,5 +1,8 @@
 import React from "react";
-import AuthScreen from "./AuthScreen";
+import dynamic from "next/dynamic";
+
+import { Loader } from ".";
+const AuthScreen = dynamic(() => import("./AuthScreen"), { loading: Loader });
 
 import Logo from "../public/logo_transparent_fit.svg";
 

@@ -1,9 +1,12 @@
 import React, { ReactNode, useEffect } from "react";
 import Head from "next/head";
+import dynamic from "next/dynamic";
 
-import { Loader, Navbar } from "../components";
-import { Footer } from "../components";
+import { Loader } from "../components";
 import { useSession } from "next-auth/client";
+
+const Navbar = dynamic(() => import("../components/Navbar"), { loading: Loader });
+const Footer = dynamic(() => import("../components/Footer"), { loading: Loader });
 
 import Image from "next/image";
 

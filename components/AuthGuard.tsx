@@ -2,7 +2,7 @@ import { useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-import { Loader } from "./";
+import { Loader } from ".";
 
 export function AuthGuard({ children }: { children: JSX.Element }) {
   const [session, loading] = useSession();

@@ -1,7 +1,10 @@
 import React from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+import { Loader } from ".";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Toggler } from ".";
+const Toggler = dynamic(() => import("./Toggler"), { loading: Loader });
 
 import LogoIcon from "../public/logo_icon.svg";
 
@@ -36,6 +39,7 @@ export default class Navbar extends React.Component {
           <button
             className="inline-flex p-3 hover:bg-blue-600 hover:text-white dark:text-white rounded md:hidden ml-auto outline-none"
             onClick={this.toggleActive}
+            title="Toggle menu"
           >
             <FontAwesomeIcon icon={["fas", "bars"]} size="2x" fixedWidth />
           </button>

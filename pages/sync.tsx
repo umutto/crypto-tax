@@ -1,5 +1,10 @@
-import { Layout } from "../layouts";
-import { Card, Dropzone } from "../components";
+import dynamic from "next/dynamic";
+
+import { Loader } from "../components";
+
+const Layout = dynamic(() => import("../layouts/Layout"), { loading: Loader });
+const Card = dynamic(() => import("../components/Card"), { loading: Loader });
+const Dropzone = dynamic(() => import("../components/Dropzone"), { loading: Loader });
 
 import styles from "../styles/home.module.scss";
 import React from "react";

@@ -9,8 +9,12 @@
 // if (error) return "An error has occurred.";
 // if (!data) return "Loading...";
 
-import { Layout } from "../layouts";
-import { Card } from "../components";
+import dynamic from "next/dynamic";
+
+import { Loader } from "../components";
+
+const Layout = dynamic(() => import("../layouts/Layout"), { loading: Loader });
+const Card = dynamic(() => import("../components/Card"), { loading: Loader });
 
 import styles from "../styles/home.module.scss";
 import { getCoinCards } from "../utils/common";

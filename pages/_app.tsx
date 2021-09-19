@@ -1,4 +1,3 @@
-import type { AppProps } from "next/app";
 import { Provider } from "next-auth/client";
 import { AuthGuard } from "../components";
 
