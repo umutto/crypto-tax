@@ -11,7 +11,7 @@ export default function Home() {
   const [session] = useSession();
 
   return (
-    <Layout background={session ? "adventure" : ["wave-anim", "moon"]}>
+    <Layout background={session ? "adventure" : ["moon"]}>
       <>
         <Welcome user={session?.user}></Welcome>
         {session && (

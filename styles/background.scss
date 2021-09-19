@@ -1,0 +1,103 @@
+@use 'variables' as *;
+
+.static-bg {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+
+  // overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  // -webkit-transform: translate3d(0, 0, 0);
+  // -webkit-backface-visibility: hidden;
+  // -webkit-perspective: 1000;
+}
+
+.bg-rocket {
+  width: 800px;
+  height: 580px;
+  bottom: 22px;
+  right: -100px;
+
+  @media (max-width: $grid-breakpoints-md - 1px) {
+    bottom: 60px;
+    right: -200px;
+  }
+  @media (max-width: $grid-breakpoints-sm - 1px) {
+    width: 523px;
+    height: 360px;
+    bottom: 80px;
+    right: -150px;
+  }
+}
+
+.bg-moon {
+  width: min(120vh, 1013px);
+  height: 60vh;
+  bottom: 0;
+  right: -2.5vw;
+  filter: drop-shadow(0px 0px 50px rgba($color-crypto, 0.25));
+
+  .dark & {
+    filter: drop-shadow(0px 0px 50px rgba($color-trivial, 0.75));
+  }
+
+  @media (max-width: $grid-breakpoints-md - 1px) {
+    right: 0;
+    left: 2.5vw;
+  }
+  @media (max-width: $grid-breakpoints-sm - 1px) {
+    left: 5vw;
+  }
+}
+
+.bg-adventure {
+  width: 832px;
+  height: 646px;
+  bottom: 0;
+  right: calc(-50px + -5vw);
+
+  @media (max-width: $grid-breakpoints-md - 1px) {
+    width: 624px;
+    height: 484px;
+  }
+  @media (max-width: $grid-breakpoints-sm - 1px) {
+    right: -100px;
+  }
+}
+
+.bg-connect {
+  width: 791px;
+  height: 580px;
+  bottom: -5vh;
+  right: -5vh;
+
+  @media (max-width: $grid-breakpoints-md - 1px) {
+    width: 525px;
+    height: 385px;
+    bottom: 0;
+    right: -10vh;
+  }
+  @media (max-width: $grid-breakpoints-sm - 1px) {
+    width: 100vw;
+    height: 100vh;
+    bottom: -20vh;
+    left: 0;
+    right: 0;
+  }
+}
+
+.bg-stats {
+  width: 821px;
+  height: 687px;
+  bottom: 48px;
+  right: -10vw;
+
+  @media (max-width: $grid-breakpoints-md - 1px) {
+    bottom: 80px;
+  }
+  @media (max-width: $grid-breakpoints-sm - 1px) {
+    bottom: 96px;
+    right: -0;
+  }
+}

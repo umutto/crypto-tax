@@ -18,7 +18,7 @@ module.exports = {
       ref: "origin/master",
       repo: "git@github.com:umutto/crypto-tax.git",
       path: "/home/ubuntu/projects/crypto-tax",
-      "post-deploy": "npm ci && pm2 startOrRestart ecosystem.config.js",
+      "post-deploy": "npm ci && npm run build && pm2 startOrRestart ecosystem.config.js",
     },
   },
 };

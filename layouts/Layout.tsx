@@ -7,14 +7,7 @@ import { useSession } from "next-auth/client";
 
 import Image from "next/image";
 
-export type BackgroundType =
-  | "moon"
-  | "rocket"
-  | "connect"
-  | "adventure"
-  | "stats"
-  | "wave-static"
-  | "wave-anim";
+export type BackgroundType = "moon" | "rocket" | "connect" | "adventure" | "stats";
 
 export default function Layout({
   children,
@@ -30,8 +23,6 @@ export default function Layout({
     connect: "/images/undraw_server_status_5pbv.svg",
     adventure: "/images/undraw_adventure_map_hnin.svg",
     stats: "/images/undraw_visual_data_re_mxxo.svg",
-    "wave-static": "/images/wave_drop.svg",
-    "wave-anim": "/images/wave_anim.svg",
   };
   const _background = background
     ? Array.isArray(background)
@@ -41,15 +32,15 @@ export default function Layout({
 
   useEffect(() => {
     if (
-      localStorage.theme === "dark" ||
+      localStorage.theme === "light" ||
       (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
+        window.matchMedia("(prefers-color-scheme: light)").matches)
     ) {
-      document.documentElement.classList.add("dark");
-      localStorage.theme = "dark";
-    } else {
       document.documentElement.classList.remove("dark");
       localStorage.theme = "light";
+    } else {
+      document.documentElement.classList.add("dark");
+      localStorage.theme = "dark";
     }
   });
 
@@ -58,7 +49,7 @@ export default function Layout({
       {loading ? (
         <Loader />
       ) : (
-        <>
+        <div className="bg-white dark:bg-gray-900 ">
           <Head>
             <title>Personal Crypto Tax Calculator</title>
             <meta name="description" content="Personal Crypto Tax Calculator" />
@@ -68,7 +59,7 @@ export default function Layout({
             <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
             <link rel="manifest" href="/site.webmanifest" />
           </Head>
-          <div className="min-h-screen flex flex-col items-center bg-white dark:bg-gray-900">
+          <div className="main-wrapper min-h-screen flex flex-col items-center bg-gradient-radial from-grad-light dark:from-grad-dark animate-subtle md:animate-none">
             {_background &&
               _background.length > 0 &&
               _background.map((b, i) => (
@@ -88,7 +79,7 @@ export default function Layout({
             </main>
             <Footer></Footer>
           </div>
-        </>
+        </div>
       )}
     </>
   );

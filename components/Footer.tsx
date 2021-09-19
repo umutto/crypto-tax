@@ -14,15 +14,16 @@ export default class Footer extends React.Component {
       <footer className="w-full border-t bg-gray-50 border-gray-300 md:py-2 mt-8 md:mt-2 dark:bg-gray-800 dark:text-white z-1">
         <div className="flex mx-3 md:mx-5 my-1">
           <span className="flex flex-col md:flex-row flex-1 text-center items-center justify-center m-3 md:my-0">
+            <span className="md:mx-1">😓 Disclaimer: Don&#39;t rely on this!</span>
             <span>
-              Check out the
+              ❤️ And check the
               <a
                 href="https://github.com/umutto/crypto-tax"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Source on Github"
               >
-                <u className="mx-1">source on github.</u>
+                <u className="mx-1">source on github!</u>
               </a>
             </span>
           </span>
