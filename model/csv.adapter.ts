@@ -5,6 +5,7 @@ const convertCsvToTransaction = (csv: Record<string, string>[]): ITransaction[] 
   const transactions: ITransaction[] = [];
   csv.forEach((r) => {
     const transaction: ITransaction = {
+      id: r["Id"],
       currencyPair: r["Sent Currency"] + "#" + r["Received Currency"],
       transactionDate: (new Date(r["Date"]).getTime() / 1000).toString(),
       sentAmount: parseFloat(r["Sent Amount"]),

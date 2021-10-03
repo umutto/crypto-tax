@@ -1,55 +1,90 @@
 import { ITransaction } from "../model";
 import { TransactionSummary } from "./constants";
-import { p } from "./utils";
+import { groupByYear, p } from "./utils";
 
 export function totalAverage(
   transactions: ITransaction[]
-): Record<string, TransactionSummary> {
-  const _initial = transactions.reduce(function (r, a) {
-    const currency = a.currencyPair.toLowerCase().replace("jpy", "").replace("#", "");
-    r[currency] = {
-      buyPrice: 0,
-      buyAmount: 0,
-      sellPrice: 0,
-      sellAmount: 0,
-    };
-    return r;
-  }, Object.create(null));
+): Record<string, Record<string, TransactionSummary>> {
+  const result = Object.fromEntries(
+    Object.entries(groupByYear(transactions)).map(([year, transactions]) => {
+      return [
+        year,
+        transactions.reduce((a, b) => {
+          const pair = b.currencyPair.toLocaleLowerCase().split("#");
+          const crypto = pair[0] === "jpy" ? pair[1] : pair[0];
 
-  const result = transactions.reduce((a, b) => {
-    if (b.currencyPair.toLowerCase().startsWith("jpy#")) {
-      const currency = b.currencyPair.split("#")[1].toLowerCase();
-      a[currency].buyPrice += b.sentAmount;
-      a[currency].buyAmount += b.receivedAmount;
-    } else if (b.currencyPair.toLowerCase().endsWith("#jpy")) {
-      const currency = b.currencyPair.split("#")[0].toLowerCase();
-      a[currency].sellPrice += b.receivedAmount;
-      a[currency].sellAmount += b.sentAmount;
-    }
-    return a;
-  }, _initial);
+          if (!a[crypto]) {
+            a[crypto] = {
+              buyPrice: 0,
+              buyAmount: 0,
+              sellPrice: 0,
+              sellAmount: 0,
+              feeTotal: 0,
+            };
+          }
 
-  Object.keys(result).forEach((currency) => {
-    result[currency] = Object.fromEntries(
-      Object.entries(result[currency]).map(([k, v]) => [k, p(<number>v)])
-    );
+          if (pair[0] === pair[1]) {
+            a[crypto].feeTotal += b.feeAmount;
+          } else if (pair[0] === "jpy") {
+            a[crypto].buyPrice += b.sentAmount;
+            a[crypto].buyAmount += b.receivedAmount;
+          } else if (pair[1] === "jpy") {
+            a[crypto].sellPrice += b.receivedAmount;
+            a[crypto].sellAmount += b.sentAmount;
+          }
+          return a;
+        }, Object.create(null)),
+      ];
+    })
+  );
 
-    result[currency].buyAverage = p(
-      result[currency].buyPrice / result[currency].buyAmount
-    );
-    result[currency].sellAverage = p(
-      result[currency].sellPrice / result[currency].sellAmount
-    );
+  let yearOffset = Object.create(null);
 
-    result[currency].remainingAmount = p(
-      result[currency].buyAmount - result[currency].sellAmount
-    );
+  Object.keys(result)
+    .sort((a, b) => parseInt(a) - parseInt(b))
+    .forEach((year) => {
+      Object.keys(result[year]).forEach((currency) => {
+        result[year][currency] = Object.fromEntries(
+          Object.entries(result[year][currency]).map(([k, v]) => [k, p(<number>v)])
+        );
 
-    result[currency].profit = p(
-      (result[currency].sellAverage - result[currency].buyAverage) *
-        result[currency].sellAmount
-    );
-  });
+        result[year][currency].buyAverage = p(
+          result[year][currency].buyPrice / result[year][currency].buyAmount
+        );
+        result[year][currency].sellAverage = p(
+          result[year][currency].sellPrice / result[year][currency].sellAmount
+        );
+
+        result[year][currency].remainingAmount = p(
+          (yearOffset[currency] ? yearOffset[currency].remainingAmount : 0) +
+            result[year][currency].buyAmount -
+            result[year][currency].sellAmount
+        );
+
+        const _buyAverage = yearOffset[currency]
+          ? (result[year][currency].buyAverage * result[year][currency].buyAmount +
+              yearOffset[currency].buyAverage * yearOffset[currency].remainingAmount) /
+            (result[year][currency].buyAmount + yearOffset[currency].remainingAmount)
+          : result[year][currency].buyAverage;
+
+        result[year][currency].profit = p(
+          (result[year][currency].sellAverage - _buyAverage) *
+            result[year][currency].sellAmount
+        );
+      });
+
+      yearOffset = Object.fromEntries(
+        Object.entries(result[year] as Record<string, TransactionSummary>).map(
+          ([currency, summary]) => [
+            currency,
+            {
+              remainingAmount: summary.remainingAmount,
+              buyAverage: summary.buyAverage,
+            },
+          ]
+        )
+      );
+    });
 
   return result;
 }

@@ -7,4 +7,5 @@ export type TransactionSummary = {
   sellAverage: number;
   profit: number;
   remainingAmount: number;
+  feeTotal: number;
 };

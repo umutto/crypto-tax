@@ -1,4 +1,5 @@
 export interface ITransaction {
+  id?: string; // UNIQUEIDENTIFIER
   currencyPair: string; // btc#jpy
   transactionDate: string; // 1488888888
   sentAmount: number; // 100

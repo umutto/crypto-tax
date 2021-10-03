@@ -25,12 +25,17 @@ export default function Dropzone() {
         setRowCount(rows.length);
 
         // temporarily print the results to console
-        const summary = totalAverage(rows);
-        const stats = transactionStats(summary);
-        console.log("Transaction Summary Per Coin:");
-        console.log(summary);
-        console.log("Transaction Stats:");
-        console.log(stats);
+        const yearlySummary = totalAverage(rows);
+        const yearlyStats = Object.fromEntries(
+          Object.entries(yearlySummary).map(([year, summary]) => [
+            year,
+            transactionStats(summary),
+          ])
+        );
+        console.log("Yearly Transaction Summary Per Coin:");
+        console.log(yearlySummary);
+        console.log("Yearly Transaction Stats:");
+        console.log(yearlyStats);
         // temporarily print the results to console
       });
     }, []),
