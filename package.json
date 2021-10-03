@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start -p 5002",
     "deploy_setup": "pm2 deploy production setup",
@@ -31,6 +31,7 @@
     "@types/papaparse": "^5.2.6",
     "@types/react": "17.0.6",
     "autoprefixer": "^10.2.5",
+    "cross-env": "^7.0.3",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
     "postcss": "^8.3.0",
