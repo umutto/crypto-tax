@@ -1,4 +1,4 @@
-@use 'sass:math';
+@use "sass:math";
 /* Pure SCSS glitch effect from https://codepen.io/lukemeyrick/pen/ayRgWO */
 
 $steps: 50;
@@ -8,7 +8,7 @@ $steps: 50;
 
   &,
   * {
-    animation: cray 6s infinite steps($steps);
+    animation: cray 8s infinite steps($steps);
     display: inline-block;
   }
 }
