@@ -18,9 +18,6 @@ export default function Sync() {
             You can upload a <span className="text-pink-500 font-bold">csv</span> file or
             use the Binance <span className="text-pink-500 font-bold">API</span> to
             register new transactions on database.
-            <br />
-            Or <span className="text-pink-500 font-bold">sync</span> your file cache from
-            database.
           </p>
 
           <div className={styles.grid + " " + styles.full}>
@@ -38,8 +35,9 @@ export default function Sync() {
             ></Card>
 
             <Card
-              title="Update"
-              description="Update local file cache from DynamoDB."
+              title="Update [*Deprecated]"
+              description="Update local file cache from DynamoDB. (Deprecated for privacy issues, use the bundled local sqlite instead)"
+              className={styles.disabled}
             ></Card>
           </div>
         </div>
