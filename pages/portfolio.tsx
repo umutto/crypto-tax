@@ -17,7 +17,7 @@ const Layout = dynamic(() => import("../layouts/Layout"), { loading: Loader });
 const Card = dynamic(() => import("../components/Card"), { loading: Loader });
 
 import styles from "../styles/home.module.scss";
-import { getCoinCards } from "../utils/common";
+import { getCoinCards } from "../utils";
 
 export default function Portfolio() {
   return (

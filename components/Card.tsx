@@ -7,7 +7,7 @@ import styles from "../styles/home.module.scss";
 
 const CardContent = (props: {
   title: string;
-  description: string;
+  description: string | ReactNode;
   children?: ReactNode;
   icon?: FontAwesomeIconProps;
 }) => {
@@ -32,7 +32,7 @@ const CardContent = (props: {
 
 class Card extends React.Component<{
   title: string;
-  description: string;
+  description: string | ReactNode;
   icon?: FontAwesomeIconProps;
   URL?: string;
   className?: string;

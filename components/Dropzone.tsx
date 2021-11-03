@@ -1,8 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useCallback, useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import { totalAverage, transactionStats } from "../lib";
+import { totalAverage } from "../lib";
 import { parseCsv } from "../model";
+import { getYearlyStats } from "../utils";
 
 export default function Dropzone() {
   const [rowCount, setRowCount] = useState(0);
@@ -26,12 +27,7 @@ export default function Dropzone() {
 
         // temporarily print the results to console
         const yearlySummary = totalAverage(rows);
-        const yearlyStats = Object.fromEntries(
-          Object.entries(yearlySummary).map(([year, summary]) => [
-            year,
-            transactionStats(summary),
-          ])
-        );
+        const yearlyStats = getYearlyStats(rows);
         console.log("Yearly Transaction Summary Per Coin:");
         console.log(yearlySummary);
         console.log("Yearly Transaction Stats:");
