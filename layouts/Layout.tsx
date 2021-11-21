@@ -70,13 +70,15 @@ export default function Layout({
                 _background.length > 0 &&
                 _background.map((b, i) => (
                   <div key={i} className={`static-bg bg-${b}`}>
-                    <Image
-                      alt={b}
-                      src={bg[b]}
-                      layout="fill"
-                      objectFit="contain"
-                      quality={100}
-                    />
+                    <div>
+                      <Image
+                        alt={b}
+                        src={bg[b]}
+                        layout="fill"
+                        objectFit="contain"
+                        quality={100}
+                      />
+                    </div>
                   </div>
                 ))}
               {session && <Navbar></Navbar>}

@@ -1,4 +1,4 @@
-@use 'variables' as *;
+@use "variables" as *;
 
 .static-bg {
   position: fixed;
@@ -11,6 +11,12 @@
   // -webkit-transform: translate3d(0, 0, 0);
   // -webkit-backface-visibility: hidden;
   // -webkit-perspective: 1000;
+
+  > div {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
 }
 
 .bg-rocket {
@@ -19,11 +25,11 @@
   bottom: 22px;
   right: -100px;
 
-  @media (max-width: $grid-breakpoints-md - 1px) {
+  @media (max-width: #{$grid-breakpoints-md - 1px}) {
     bottom: 60px;
     right: -200px;
   }
-  @media (max-width: $grid-breakpoints-sm - 1px) {
+  @media (max-width: #{$grid-breakpoints-sm - 1px}) {
     width: 523px;
     height: 360px;
     bottom: 80px;
@@ -42,11 +48,11 @@
     filter: drop-shadow(0px 0px 50px rgba($color-trivial, 0.75));
   }
 
-  @media (max-width: $grid-breakpoints-md - 1px) {
+  @media (max-width: #{$grid-breakpoints-md - 1px}) {
     right: 0;
     left: 2.5vw;
   }
-  @media (max-width: $grid-breakpoints-sm - 1px) {
+  @media (max-width: #{$grid-breakpoints-sm - 1px}) {
     left: 5vw;
   }
 }
@@ -57,11 +63,11 @@
   bottom: 0;
   right: calc(-50px + -5vw);
 
-  @media (max-width: $grid-breakpoints-md - 1px) {
+  @media (max-width: #{$grid-breakpoints-md - 1px}) {
     width: 624px;
     height: 484px;
   }
-  @media (max-width: $grid-breakpoints-sm - 1px) {
+  @media (max-width: #{$grid-breakpoints-sm - 1px}) {
     right: -100px;
   }
 }
@@ -72,13 +78,13 @@
   bottom: -5vh;
   right: -5vh;
 
-  @media (max-width: $grid-breakpoints-md - 1px) {
+  @media (max-width: #{$grid-breakpoints-md - 1px}) {
     width: 525px;
     height: 385px;
     bottom: 0;
     right: -10vh;
   }
-  @media (max-width: $grid-breakpoints-sm - 1px) {
+  @media (max-width: #{$grid-breakpoints-sm - 1px}) {
     width: 100vw;
     height: 100vh;
     bottom: -20vh;
@@ -93,10 +99,10 @@
   bottom: 48px;
   right: -10vw;
 
-  @media (max-width: $grid-breakpoints-md - 1px) {
+  @media (max-width: #{$grid-breakpoints-md - 1px}) {
     bottom: 80px;
   }
-  @media (max-width: $grid-breakpoints-sm - 1px) {
+  @media (max-width: #{$grid-breakpoints-sm - 1px}) {
     bottom: 96px;
     right: -0;
   }

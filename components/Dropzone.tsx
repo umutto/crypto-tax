@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useCallback, useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { totalAverage } from "../lib";
@@ -19,9 +18,9 @@ export default function Dropzone() {
     isDragReject,
   } = useDropzone({
     accept: ".csv",
-    maxFiles: 1,
+    // maxFiles: 1,
     onDrop: useCallback((acceptedFiles) => {
-      parseCsv(acceptedFiles[0], (rows) => {
+      parseCsv(acceptedFiles, (rows) => {
         dataRef.current = rows;
         setRowCount(rows.length);
 
@@ -37,20 +36,19 @@ export default function Dropzone() {
     }, []),
   });
 
-  const files = acceptedFiles.map((file) => (
-    <span key={file.name}>
-      {file.name} - {file.size} bytes.
-      <span>
-        <br />
-        Found <strong>{rowCount}</strong> rows.
-      </span>
-    </span>
-  ));
-
-  const handleClick = () => {
-    console.log(dataRef.current);
-    // @TODO: send the data to the server
-  };
+  const files =
+    acceptedFiles && acceptedFiles.length > 0 ? (
+      <div>
+        {acceptedFiles.map((file) => (
+          <p key={file.name}>
+            {file.name} - {file.size} bytes.
+          </p>
+        ))}
+        <p>
+          Found <strong>{rowCount}</strong> total rows.
+        </p>
+      </div>
+    ) : null;
 
   return (
     <section className="container p-5">
@@ -81,17 +79,6 @@ export default function Dropzone() {
         <aside className="flex">
           <div className="text-center">{files}</div>
         </aside>
-        {rowCount > 0 ? (
-          <div className="flex align-center justify-center">
-            <button
-              onClick={handleClick}
-              className="bg-blue-500 hover:bg-white hover:text-blue-500 text-white border-blue-500 border-2 dark:border-gray-900 dark:bg-gray-900 dark:hover:bg-white dark:hover:text-gray-900 font-bold py-2 px-4 rounded p-2"
-            >
-              <FontAwesomeIcon icon={["fas", "sync-alt"]} fixedWidth className="mr-2" />
-              Sync to Database
-            </button>
-          </div>
-        ) : null}
       </div>
     </section>
   );

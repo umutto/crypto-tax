@@ -2,6 +2,8 @@ export interface ITransaction {
   id?: string; // UNIQUEIDENTIFIER
   currencyPair: string; // btc#jpy
   transactionDate: string; // 1488888888
+  sentCurrency: string; // btc
+  receivedCurrency: string; // jpy
   sentAmount: number; // 100
   receivedAmount: number; // 100000
   feeAmount?: number; // 0
@@ -16,3 +18,5 @@ export interface ICache {
   lastFetchDate: string;
   data: ITransaction[];
 }
+
+export type csvWithHeader = Record<string, string>;
