@@ -192,6 +192,19 @@ const convertTransactionHistory = (csv: ParseResult<csvWithHeader>): ITransactio
 };
 
 const convertReserveHistory = (csv: ParseResult<csvWithHeader>): ITransaction[] => {
-  const transactions: ITransaction[] = [];
-  return transactions;
+  return csv.data.map((r) => ({
+    id: r.Id,
+    currencyPair: r["Original Currency"] + "#" + r["Trading Currency"],
+    transactionDate: (new Date(r["Time"]).getTime() / 1000).toString(),
+    sentCurrency: r["Original Currency"],
+    sentAmount: parseFloat(r["Price"]),
+    receivedCurrency: r["Trading Currency"],
+    receivedAmount: parseFloat(r["Amount"]),
+    feeAmount: r["Fee Amount"] ? parseFloat(r["Fee Amount"]) : 0,
+    feeCurrency: r["Fee Currency"] ? r["Fee Currency"] : "JPY",
+    label: r["Label"] ? r["Label"] : "coincheck_reserve_action",
+    description: r["Description"] ? r["Description"] : "",
+    txHash: r["TxHash"] ? r["TxHash"] : "",
+    wallet: "coincheck",
+  }));
 };
