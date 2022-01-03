@@ -10,8 +10,17 @@ export default NextAuth({
     }),
   ],
   theme: "auto",
+  pages: {
+    error: "/error",
+  },
   callbacks: {
     async signIn(user, account, profile) {
+      if (
+        process.env.NEXT_AUTH_RESTRICTED_TO &&
+        profile.id !== process.env.NEXT_AUTH_RESTRICTED_TO
+      ) {
+        throw new Error("Restricted Access");
+      }
       return true;
     },
     async redirect(url, baseUrl) {

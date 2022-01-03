@@ -9,10 +9,8 @@ export function AuthGuard({ children }: { children: JSX.Element }) {
   const router = useRouter();
 
   useEffect(() => {
-    if (!loading) {
-      if (!session) {
-        router.push("/");
-      }
+    if (!loading && !session) {
+      router.push("/");
     }
   }, [loading, router, session]);
 
