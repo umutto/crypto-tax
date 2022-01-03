@@ -77,6 +77,7 @@ export default function Layout({
                         layout="fill"
                         objectFit="contain"
                         quality={100}
+                        priority={true}
                       />
                     </div>
                   </div>
