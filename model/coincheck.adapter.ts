@@ -1,53 +1,13 @@
 import { ParseResult } from "papaparse";
-import { compareArrays, csvWithHeader, getPriceAtDate, ITransaction } from ".";
+import { csvWithHeader, getPriceAtDate, ITransaction } from ".";
 
 export const coincheckPreprocess = (chunk: string): string => {
   return chunk.replaceAll(/期間指定：.*[\r\n]+/gm, "");
 };
 
-export const isCoincheckCsv = (headers: string[]): boolean => {
-  return isTransactionHistoryCsv(headers) || isReserveHistoryCsv(headers);
-};
-
-const isTransactionHistoryCsv = (headers: string[]): boolean => {
-  const transactionHistory = [
-    "id",
-    "time",
-    "operation",
-    "amount",
-    "trading_currency",
-    "price",
-    "original_currency",
-    "fee",
-    "comment",
-  ];
-  return compareArrays(transactionHistory, headers);
-};
-
-const isReserveHistoryCsv = (headers: string[]): boolean => {
-  const reserveHistory = [
-    "ID",
-    "Amount",
-    "Price",
-    "Rate",
-    "Trading Currency",
-    "Original Currency",
-    "Plan",
-    "Progress",
-    "Time",
-  ];
-  return compareArrays(reserveHistory, headers);
-};
-
-export const convertCoincheckCsv = async (
+export const convertTradeHistory = async (
   csv: ParseResult<csvWithHeader>
 ): Promise<ITransaction[]> => {
-  return csv.meta.fields && isTransactionHistoryCsv(csv.meta.fields)
-    ? convertTransactionHistory(csv)
-    : convertReserveHistory(csv);
-};
-
-const convertTransactionHistory = (csv: ParseResult<csvWithHeader>): ITransaction[] => {
   const transactions: ITransaction[] = [];
 
   csv.data.forEach((row: csvWithHeader) => {
@@ -191,7 +151,9 @@ const convertTransactionHistory = (csv: ParseResult<csvWithHeader>): ITransactio
   return transactions;
 };
 
-const convertReserveHistory = (csv: ParseResult<csvWithHeader>): ITransaction[] => {
+export const convertReserveHistory = async (
+  csv: ParseResult<csvWithHeader>
+): Promise<ITransaction[]> => {
   return csv.data.map((r) => ({
     id: r.Id,
     currencyPair: r["Original Currency"] + "#" + r["Trading Currency"],

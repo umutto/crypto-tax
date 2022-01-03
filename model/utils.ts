@@ -9,6 +9,15 @@ export const compareArrays = <T>(a: T[], b: T[], strict = false): boolean => {
   return _a.length === _b.length && _a.every((value, index) => value === _b[index]);
 };
 
+export const groupBy = <T>(array: T[], key: (keyof T)[]): { [key: string]: T[] } => {
+  return array.reduce((c, a) => {
+    const g = key.map((k) => `${a[k]}`).join(":");
+
+    (c[g] = c[g] || []).push(a);
+    return c;
+  }, {} as { [key: string]: T[] });
+};
+
 export const getPriceAtDate = async (token: string, date: string): Promise<number> => {
   const _tokenId =
     coinNames.find((coin) => coin.symbol === token.toLowerCase())?.id || token;

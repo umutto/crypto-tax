@@ -1,3 +1,5 @@
+import { ParseResult } from "papaparse";
+
 export interface ITransaction {
   id?: string; // UNIQUEIDENTIFIER
   currencyPair: string; // btc#jpy
@@ -20,3 +22,12 @@ export interface ICache {
 }
 
 export type csvWithHeader = Record<string, string>;
+
+export type CsvAdapterFunction = (
+  csv: ParseResult<csvWithHeader>
+) => Promise<ITransaction[]>;
+export type CsvAdapter = {
+  name: string;
+  header: string[];
+  adapter: CsvAdapterFunction;
+};
