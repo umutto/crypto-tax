@@ -3,6 +3,7 @@ import { useDropzone } from "react-dropzone";
 import { totalAverage } from "../lib";
 import { parseCsv } from "../model";
 import { getYearlyStats } from "../utils";
+import { toast, Zoom } from "react-toastify";
 
 export default function Dropzone() {
   const [rowCount, setRowCount] = useState(0);
@@ -18,8 +19,11 @@ export default function Dropzone() {
     isDragReject,
   } = useDropzone({
     accept: ".csv",
-    // maxFiles: 1,
     onDrop: useCallback((acceptedFiles) => {
+      const promiseToast = toast.loading("Parsing CSV", {
+        position: toast.POSITION.BOTTOM_CENTER,
+      });
+
       parseCsv(acceptedFiles, (rows) => {
         dataRef.current = rows;
         setRowCount(rows.length);
@@ -32,6 +36,20 @@ export default function Dropzone() {
         console.log("Yearly Transaction Stats:");
         console.log(yearlyStats);
         // temporarily print the results to console
+
+        toast.update(promiseToast, {
+          render: `Parsed ${rows.length} rows!`,
+          type: "info",
+          isLoading: false,
+          transition: Zoom,
+          autoClose: 3000,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          position: toast.POSITION.BOTTOM_CENTER,
+          closeButton: null,
+          theme: document.documentElement.classList.contains("dark") ? "dark" : "light",
+        });
       });
     }, []),
   });

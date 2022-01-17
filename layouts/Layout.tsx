@@ -5,6 +5,10 @@ import dynamic from "next/dynamic";
 import { Loader } from "../components";
 import { useSession } from "next-auth/client";
 
+import { ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Navbar = dynamic(() => import("../components/Navbar"), { loading: Loader });
 const Footer = dynamic(() => import("../components/Footer"), { loading: Loader });
 
@@ -88,6 +92,7 @@ export default function Layout({
               </main>
               <Footer></Footer>
             </div>
+            <ToastContainer />
           </div>
         </>
       )}
