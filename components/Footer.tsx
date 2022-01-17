@@ -9,8 +9,8 @@ export default class Footer extends React.Component {
       : null;
     return (
       <footer className="w-full border-t bg-gray-50 border-gray-300 md:py-2 mt-8 md:mt-2 dark:bg-gray-800 dark:text-white z-1">
-        <div className="flex mx-3 md:mx-5 my-1">
-          <span className="flex flex-col md:flex-row flex-1 text-center items-center justify-center m-3 md:my-0">
+        <div className="flex mx-3 py-2 md:mx-5 my-1">
+          <span className="flex flex-col md:flex-row flex-1 text-center items-center justify-center mr-3 text-xs md:text-base">
             <span className="md:mx-1">😓 Disclaimer: Don&#39;t rely on this!</span>
             <span>
               ❤️ And check the
@@ -24,7 +24,7 @@ export default class Footer extends React.Component {
               </a>
             </span>
           </span>
-          <div className="flex md:mr-2 my-4 md:my-0">
+          <div className="flex md:mr-2">
             <div className="grid grid-cols-2 mx-0 gap-x-3">
               <a
                 className={`col-span-2 ${
