@@ -9,3 +9,4 @@ export * from "./default.adapter";
 export * from "./koinly.adapter";
 export * from "./binance.adapter";
 export * from "./coincheck.adapter";
+export * from "./coingecko.api";

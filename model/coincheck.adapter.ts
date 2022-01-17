@@ -10,7 +10,7 @@ export const convertTradeHistory = async (
 ): Promise<ITransaction[]> => {
   const transactions: ITransaction[] = [];
 
-  csv.data.forEach((row: csvWithHeader) => {
+  for (const row of csv.data) {
     if (row.operation.toLowerCase() === "buy") {
       transactions.push({
         id: row.id,
@@ -42,7 +42,9 @@ export const convertTradeHistory = async (
         wallet: "coincheck",
       });
     } else if (row.operation.toLowerCase() === "sent") {
-      const _feeAmount = 0; // await getPriceAtDate(row.trading_currency, row.time) * Math.abs(parseFloat(row.fee));
+      const _feeAmount =
+        (await getPriceAtDate(row.trading_currency, row.time)) *
+        Math.abs(parseFloat(row.fee));
       transactions.push({
         id: row.id,
         currencyPair: row.trading_currency + "#" + row.original_currency,
@@ -82,7 +84,7 @@ export const convertTradeHistory = async (
         });
       }
     } else if (row.operation.toLowerCase() === "campaign reward") {
-      const _sentAmount = 0; // await getPriceAtDate(row.trading_currency, row.time) * parseFloat(row.amount);
+      const _sentAmount = 0;
       transactions.push({
         id: row.id,
         currencyPair: "JPY#" + row.trading_currency,
@@ -146,7 +148,7 @@ export const convertTradeHistory = async (
         wallet: "coincheck",
       });
     }
-  });
+  }
 
   return transactions;
 };
