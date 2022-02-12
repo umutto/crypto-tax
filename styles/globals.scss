@@ -1,7 +1,7 @@
-@use 'variables' as *;
+@use "variables" as *;
 
-@use 'background';
-@use 'utils';
+@use "background";
+@use "utils";
 
 @tailwind base;
 @tailwind components;
@@ -13,6 +13,9 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
     Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  height: 100%;
+}
+[data-reactroot] {
   height: 100%;
 }
 
