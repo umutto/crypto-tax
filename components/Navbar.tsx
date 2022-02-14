@@ -33,7 +33,7 @@ export default class Navbar extends React.Component {
               title="Crypto Tax Calculator"
             >
               <LogoIcon className="mr-3 md:mr-5 h-14 w-14 -my-4" />
-              <span className="text-2xl md:text-3xl font-bold uppercase">KrypTax</span>
+              <span className="text-2xl md:text-3xl font-bold">TaxMan</span>
             </a>
           </Link>
           <button
