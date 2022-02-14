@@ -1,7 +1,4 @@
-import parseCsv from "./csv.adapter";
-
-export { parseCsv };
-
+export * from "./csv.adapter";
 export * from "./constants";
 export * from "./utils";
 export * from "./adapters";

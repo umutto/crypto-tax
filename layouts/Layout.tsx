@@ -6,7 +6,6 @@ import { Loader } from "../components";
 import { useSession } from "next-auth/client";
 
 import { ToastContainer } from "react-toastify";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Navbar = dynamic(() => import("../components/Navbar"), { loading: Loader });
