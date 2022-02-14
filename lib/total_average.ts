@@ -3,7 +3,8 @@ import { TransactionSummary } from "./constants";
 import { groupByYear, p } from "./utils";
 
 export function totalAverage(
-  transactions: ITransaction[]
+  transactions: ITransaction[],
+  ignoreNegative?: boolean
 ): Record<string, Record<string, TransactionSummary>> {
   const result = Object.fromEntries(
     Object.entries(groupByYear(transactions)).map(([year, transactions]) => {
@@ -23,15 +24,14 @@ export function totalAverage(
             };
           }
 
-          if (pair[0] === pair[1]) {
-            a[crypto].feeTotal += b.feeAmount;
-          } else if (pair[0] === "jpy") {
+          if (pair[0] !== pair[1] && pair[0] === "jpy") {
             a[crypto].buyPrice += b.sentAmount;
             a[crypto].buyAmount += b.receivedAmount;
-          } else if (pair[1] === "jpy") {
+          } else if (pair[0] !== pair[1] && pair[1] === "jpy") {
             a[crypto].sellPrice += b.receivedAmount;
             a[crypto].sellAmount += b.sentAmount;
           }
+          a[crypto].feeTotal += b.feeAmount;
           return a;
         }, Object.create(null)),
       ];
@@ -71,6 +71,10 @@ export function totalAverage(
           (result[year][currency].sellAverage - _buyAverage) *
             result[year][currency].sellAmount
         );
+
+        if (ignoreNegative) {
+          result[year][currency].profit = Math.max(result[year][currency].profit, 0);
+        }
       });
 
       yearOffset = Object.fromEntries(
