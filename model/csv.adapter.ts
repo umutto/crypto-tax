@@ -1,5 +1,5 @@
 import Papa, { ParseResult } from "papaparse";
-import { csvWithHeader, ITransaction } from "./";
+import { csvWithHeader, humanReadable, ITransaction } from "./";
 import { getAdapter } from "./adapters";
 import { coincheckPreprocess } from "./coincheck.adapter";
 
@@ -33,24 +33,54 @@ function parseCsvFile(file: File) {
   });
 }
 
-export default async function parseCsv(
+export async function parseCsv(
   files: File[],
-  onSuccess = (r: ITransaction[]) => {},
+  onSuccess = (r: ITransaction[], n: number) => {},
   onError = (e?: any) => {}
 ) {
   const promises = files.map((file) => parseCsvFile(file));
 
   try {
+    let rowLength = 0;
     const results = (await Promise.all(promises)) as ParseResult<csvWithHeader>[];
     const transactions: ITransaction[] = [];
 
     for (const result of results) {
+      rowLength += result.data.length;
       const extracted = await convertCsvToTransaction(result);
       transactions.push(...extracted);
     }
 
-    onSuccess(transactions);
+    onSuccess(
+      transactions.sort(
+        (a, b) => parseInt(a.transactionDate) - parseInt(b.transactionDate)
+      ),
+      rowLength
+    );
   } catch (error) {
     onError(error);
   }
+}
+
+export async function writeToCsv(transactions: ITransaction[], filename?: string) {
+  const _filename = filename || `transactions_${new Date().toJSON().slice(0, 16)}.csv`;
+  const readable = transactions.map((t) =>
+    Object.fromEntries(
+      Object.entries(t).map(([key, value]) => [humanReadable(key), value])
+    )
+  );
+
+  const csv = Papa.unparse(readable);
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+  const url = window.URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.setAttribute("download", _filename);
+  document.body.appendChild(link);
+  link.click();
+
+  setTimeout(function () {
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+  }, 250);
 }

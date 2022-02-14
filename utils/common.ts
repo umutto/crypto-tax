@@ -19,7 +19,7 @@ export const getYearlyStats = (
   rows?: ITransaction[]
 ): Record<string, YearStatsLocale> => {
   const transactions = rows || [];
-  const yearlySummary = totalAverage(transactions);
+  const yearlySummary = totalAverage(transactions, true);
   const yearlyStats = Object.fromEntries(
     Object.entries(yearlySummary).map(([year, summary]) => [
       year,
