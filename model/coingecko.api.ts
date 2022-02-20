@@ -26,20 +26,6 @@ export const getPriceAtDate = async (
     )?.id || token;
   const _date = format(new Date(date), "dd-MM-yyyy");
 
-  // // @TODO: REMOVE AFTER, FOR TEST ONLY
-  // if (token === "btc" && _date === "11-06-2019") {
-  //   return 700;
-  // } else if (token === "btc" && _date === "11-06-2020") {
-  //   return 800;
-  // } else if (token === "btc" && _date === "17-08-2020") {
-  //   return 850;
-  // } else if (token === "btc" && _date === "04-09-2020") {
-  //   return 900;
-  // } else if (token === "btc" && _date === "13-11-2020") {
-  //   return 950;
-  // }
-  // // @TODO: REMOVE AFTER, FOR TEST ONLY
-
   const getUrl = `https://api.coingecko.com/api/v3/coins/${_tokenId}/history`;
 
   const _price = priceCache.get(`${_tokenId}-${_date}`);
