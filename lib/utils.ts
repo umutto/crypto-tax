@@ -1,7 +1,7 @@
 import { ITransaction } from "../model";
 import { TransactionSummary } from "./constants";
 
-export const p = (n: number, p = 12): number => {
+export const p = (n: number, p = 16): number => {
   const result = Number.isNaN(n) ? 0 : parseFloat(n.toFixed(p));
 
   return Object.is(result, -0) ? 0 : result;
