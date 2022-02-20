@@ -1,5 +1,5 @@
 import { ParseResult } from "papaparse";
-import { csvWithHeader, ITransaction } from ".";
+import { csvWithHeader, humanReadable, ITransaction, readableToCamel } from ".";
 
 export const convertDefaultCsv = async (
   csv: ParseResult<csvWithHeader>
@@ -27,4 +27,16 @@ export const convertDefaultCsv = async (
   });
 
   return transactions;
+};
+
+export const convertDefaultCsvReadable = async (
+  csv: ParseResult<csvWithHeader>
+): Promise<ITransaction[]> => {
+  return convertDefaultCsv({
+    meta: csv.meta,
+    errors: csv.errors,
+    data: csv.data.map((r) =>
+      Object.fromEntries(Object.entries(r).map(([k, v]) => [readableToCamel(k), v]))
+    ),
+  });
 };

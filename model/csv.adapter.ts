@@ -11,6 +11,7 @@ const convertCsvToTransaction = async (
   }
 
   const adapterFn = getAdapter(csv.meta.fields);
+
   if (!adapterFn) {
     throw new Error("Cannot find adapter for csv!");
   }

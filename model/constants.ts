@@ -1,7 +1,7 @@
 import { ParseResult } from "papaparse";
 
 export interface ITransaction {
-  id?: string; // UNIQUEIDENTIFIER
+  id: string; // UNIQUEIDENTIFIER
   currencyPair: string; // btc#jpy
   transactionTicks: string; // 1488888888
   transactionDate: string; // 2017-01-01T00:00:00.000Z
@@ -31,6 +31,7 @@ export type CsvAdapter = {
   name: string;
   header: string[];
   adapter: CsvAdapterFunction;
+  options?: { strict: boolean; partial: boolean };
 };
 
 export type CsvDataDefault = {

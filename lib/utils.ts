@@ -60,7 +60,7 @@ export const groupByYear = (
   const result: Record<string, ITransaction[]> = {};
 
   transactions.forEach((t) => {
-    const year = new Date(parseInt(t.transactionDate) * 1000).getFullYear().toString();
+    const year = new Date(parseInt(t.transactionTicks) * 1000).getFullYear().toString();
     if (!result[year]) {
       result[year] = [];
     }

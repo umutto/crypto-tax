@@ -1,8 +1,18 @@
-export const compareArrays = <T>(a: T[], b: T[], strict = false): boolean => {
-  const _a = strict ? a : [...a].sort().filter((e) => e);
-  const _b = strict ? b : [...b].sort().filter((e) => e);
+export const compareArrays = <T>(
+  a: T[],
+  b: T[],
+  opts?: { partial: boolean; strict: boolean }
+): boolean => {
+  const _opts = opts || { partial: false, strict: false };
+  const _a = _opts?.strict ? a : [...a].sort().filter((e) => e);
+  const _b = _opts?.strict ? b : [...b].sort().filter((e) => e);
 
-  return _a.length === _b.length && _a.every((value, index) => value === _b[index]);
+  return (
+    (_opts?.partial ? true : _a.length === _b.length) &&
+    _b.every((value, index) =>
+      _opts?.strict && !_opts?.partial ? value === _a[index] : _a.includes(value)
+    )
+  );
 };
 
 export const closestIdx = (array: number[], value: number): number => {
@@ -32,6 +42,11 @@ export const humanReadable = (str: string): string => {
     .join("");
 
   return result[0].toUpperCase() + result.slice(1);
+};
+
+export const readableToCamel = (str: string): string => {
+  const result = str.replaceAll(" ", "");
+  return result[0].toLowerCase() + result.slice(1);
 };
 
 // export const binanceUniqueOpList = (csv: ParseResult<csvWithHeader>) => {

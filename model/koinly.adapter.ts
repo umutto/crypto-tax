@@ -1,25 +1,5 @@
 import { ParseResult } from "papaparse";
-import { compareArrays, csvWithHeader, ITransaction } from ".";
-
-export const isKoinlyCsv = (headers: string[]): boolean => {
-  const expectedHeaders = [
-    "Id",
-    "Date",
-    "Sent Amount",
-    "Sent Currency",
-    "Received Amount",
-    "Received Currency",
-    "Fee Amount",
-    "Fee Currency",
-    "Net Worth Amount",
-    "Net Worth Currency",
-    "Label",
-    "Description",
-    "TxHash",
-  ];
-
-  return compareArrays(headers, expectedHeaders);
-};
+import { csvWithHeader, ITransaction } from ".";
 
 export const convertKoinlyCsv = async (
   csv: ParseResult<csvWithHeader>

@@ -1,8 +1,9 @@
+import { CsvAdapter, CsvAdapterFunction } from "./constants";
 import { convertAllStatements, convertSpotHistory } from "./binance.adapter";
 import { convertReserveHistory, convertTradeHistory } from "./coincheck.adapter";
-import { convertDefaultCsv } from "./default.adapter";
+import { convertDefaultCsv, convertDefaultCsvReadable } from "./default.adapter";
 import { convertKoinlyCsv } from "./koinly.adapter";
-import { CsvAdapter, compareArrays, CsvAdapterFunction } from ".";
+import { compareArrays } from "./utils";
 
 export const Adapters: Record<string, CsvAdapter> = {
   default: {
@@ -11,7 +12,7 @@ export const Adapters: Record<string, CsvAdapter> = {
       "id",
       "currencyPair",
       "transactionTicks",
-      "transactionDate(UTC)",
+      "transactionDate",
       "sentCurrency",
       "receivedCurrency",
       "sentAmount",
@@ -24,6 +25,34 @@ export const Adapters: Record<string, CsvAdapter> = {
       "wallet",
     ],
     adapter: convertDefaultCsv,
+    options: {
+      strict: false,
+      partial: true,
+    },
+  },
+  defaultHuman: {
+    name: "default",
+    header: [
+      "Id",
+      "Currency Pair",
+      "Transaction Ticks",
+      "Transaction Date",
+      "Sent Currency",
+      "Received Currency",
+      "Sent Amount",
+      "Received Amount",
+      "Fee Amount",
+      "Fee Currency",
+      "Label",
+      "Description",
+      "Tx Hash",
+      "Wallet",
+    ],
+    adapter: convertDefaultCsvReadable,
+    options: {
+      strict: false,
+      partial: true,
+    },
   },
   koinly: {
     name: "Koinly",
@@ -87,6 +116,7 @@ export const Adapters: Record<string, CsvAdapter> = {
 };
 
 export const getAdapter = (headers: string[]): CsvAdapterFunction | undefined => {
-  return Object.values(Adapters).find((adapter) => compareArrays(adapter.header, headers))
-    ?.adapter;
+  return Object.values(Adapters).find((adapter) =>
+    compareArrays(adapter.header, headers, adapter?.options)
+  )?.adapter;
 };

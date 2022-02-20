@@ -6,6 +6,7 @@ const fetchData = async (lastFetchDate?: string): Promise<ITransaction[]> => {
   // TODO: query the table with the last fetch date
   return [
     {
+      id: "ID",
       currencyPair: "btc#jpy",
       sentCurrency: "btc", // btc
       receivedCurrency: "jpy", // jpy
