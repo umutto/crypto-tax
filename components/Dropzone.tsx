@@ -22,6 +22,7 @@ export default function Dropzone() {
     onDrop: useCallback((acceptedFiles) => {
       const promiseToast = toast.loading("Parsing CSV", {
         position: toast.POSITION.BOTTOM_CENTER,
+        transition: Zoom,
       });
       const toastCommon = {
         isLoading: false,

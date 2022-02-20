@@ -61,14 +61,15 @@ export function totalAverage(
             result[year][currency].sellAmount
         );
 
-        const _buyAverage = yearOffset[currency]
+        const costBasis = yearOffset[currency]
           ? (result[year][currency].buyAverage * result[year][currency].buyAmount +
               yearOffset[currency].buyAverage * yearOffset[currency].remainingAmount) /
             (result[year][currency].buyAmount + yearOffset[currency].remainingAmount)
           : result[year][currency].buyAverage;
 
+        result[year][currency].costBasis = costBasis;
         result[year][currency].profit = p(
-          (result[year][currency].sellAverage - _buyAverage) *
+          (result[year][currency].sellAverage - costBasis) *
             result[year][currency].sellAmount
         );
 
