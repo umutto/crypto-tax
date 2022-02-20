@@ -21,6 +21,7 @@ export const groupBy = <T>(array: T[], key: (keyof T)[]): { [key: string]: T[] }
 };
 
 export const humanReadable = (str: string): string => {
+  // const result = str.replace(/((?<!\()[A-Z](?![\w\s]*[\)]))/gm, " $1"); // replace all capital letters except those in parenthesis
   const result = str
     .split("")
     .map((letter, idx) => {

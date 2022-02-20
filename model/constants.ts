@@ -3,8 +3,8 @@ import { ParseResult } from "papaparse";
 export interface ITransaction {
   id?: string; // UNIQUEIDENTIFIER
   currencyPair: string; // btc#jpy
-  transactionDate: string; // 1488888888
-  transactionDateUTC: string; // 2017-01-01T00:00:00.000Z
+  transactionTicks: string; // 1488888888
+  transactionDate: string; // 2017-01-01T00:00:00.000Z
   sentCurrency: string; // btc
   receivedCurrency: string; // jpy
   sentAmount: number; // 100
@@ -36,8 +36,8 @@ export type CsvAdapter = {
 export type CsvDataDefault = {
   id: string;
   currencyPair: string;
+  transactionTicks: string;
   transactionDate: string;
-  transactionDateUTC: string;
   sentCurrency: string;
   receivedCurrency: string;
   sentAmount: string;
@@ -55,8 +55,8 @@ export function isCsvDataDefault(
   return (
     (<CsvDataDefault[]>csvData)[0].id !== undefined &&
     (<CsvDataDefault[]>csvData)[0].currencyPair !== undefined &&
+    (<CsvDataDefault[]>csvData)[0].transactionTicks !== undefined &&
     (<CsvDataDefault[]>csvData)[0].transactionDate !== undefined &&
-    (<CsvDataDefault[]>csvData)[0].transactionDateUTC !== undefined &&
     (<CsvDataDefault[]>csvData)[0].sentCurrency !== undefined &&
     (<CsvDataDefault[]>csvData)[0].receivedCurrency !== undefined &&
     (<CsvDataDefault[]>csvData)[0].sentAmount !== undefined &&

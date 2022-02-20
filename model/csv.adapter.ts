@@ -53,7 +53,7 @@ export async function parseCsv(
 
     onSuccess(
       transactions.sort(
-        (a, b) => parseInt(a.transactionDate) - parseInt(b.transactionDate)
+        (a, b) => parseInt(a.transactionTicks) - parseInt(b.transactionTicks)
       ),
       rowLength
     );

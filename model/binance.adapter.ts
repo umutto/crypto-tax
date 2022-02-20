@@ -68,8 +68,8 @@ export const convertAllStatements = async (
       transactions.push({
         id: `${_userId}_${_ticks}_deposit`,
         currencyPair: _transactions[0].Coin + "#" + _transactions[0].Coin,
-        transactionDate: _ticks,
-        transactionDateUTC: new Date(date).toUTCString(),
+        transactionTicks: _ticks,
+        transactionDate: new Date(date).toUTCString(),
         sentAmount: parseFloat(_transactions[0].Change),
         sentCurrency: _transactions[0].Coin.toUpperCase(),
         receivedAmount: parseFloat(_transactions[0].Change),
@@ -96,8 +96,8 @@ export const convertAllStatements = async (
       transactions.push({
         id: `${_userId}_${_ticks}_withdraw`,
         currencyPair: _sendCoin + "#" + _sendCoin,
-        transactionDate: _ticks,
-        transactionDateUTC: new Date(date).toUTCString(),
+        transactionTicks: _ticks,
+        transactionDate: new Date(date).toUTCString(),
         sentAmount: _sendAmount,
         sentCurrency: _sendCoin.toUpperCase(),
         receivedAmount: _sendAmount,
@@ -191,8 +191,8 @@ export const convertAllStatements = async (
       transactions.push({
         id: `${userId}_${ticks}_sell`,
         currencyPair: sendCoin + "#JPY",
-        transactionDate: ticks,
-        transactionDateUTC: new Date(date).toUTCString(),
+        transactionTicks: ticks,
+        transactionDate: new Date(date).toUTCString(),
         sentAmount: sendAmount,
         sentCurrency: sendCoin.toUpperCase(),
         receivedAmount: intermediateValue,
@@ -206,8 +206,8 @@ export const convertAllStatements = async (
       transactions.push({
         id: `${userId}_${ticks}_buy`,
         currencyPair: "JPY#" + receiveCoin,
-        transactionDate: ticks,
-        transactionDateUTC: new Date(date).toUTCString(),
+        transactionTicks: ticks,
+        transactionDate: new Date(date).toUTCString(),
         sentAmount: intermediateValue,
         sentCurrency: "JPY",
         receivedAmount:
@@ -328,8 +328,8 @@ export const convertAllStatements = async (
       transactions.push({
         id: `${userId}_${ticks}_sell`,
         currencyPair: sendCoin + "#JPY",
-        transactionDateUTC: new Date(date).toUTCString(),
-        transactionDate: ticks,
+        transactionDate: new Date(date).toUTCString(),
+        transactionTicks: ticks,
         sentAmount: sendAmount,
         sentCurrency: sendCoin.toUpperCase(),
         receivedAmount: intermediateValue,
@@ -343,8 +343,8 @@ export const convertAllStatements = async (
       transactions.push({
         id: `${userId}_${ticks}_buy`,
         currencyPair: "JPY#" + receiveCoin,
-        transactionDateUTC: new Date(date).toUTCString(),
-        transactionDate: ticks,
+        transactionDate: new Date(date).toUTCString(),
+        transactionTicks: ticks,
         sentAmount: intermediateValue,
         sentCurrency: "JPY",
         receivedAmount:
@@ -360,8 +360,8 @@ export const convertAllStatements = async (
         transactions.push({
           id: `${userId}_${ticks}_kickback`,
           currencyPair: "JPY#" + kickbackCoin,
-          transactionDateUTC: new Date(date).toUTCString(),
-          transactionDate: ticks,
+          transactionDate: new Date(date).toUTCString(),
+          transactionTicks: ticks,
           sentAmount: 0,
           sentCurrency: "JPY",
           receivedAmount: _kickbackAmount,
@@ -466,8 +466,8 @@ export const convertAllStatements = async (
       transactions.push({
         id: `${userId}_${ticks}_sell`,
         currencyPair: sendCoin + "#JPY",
-        transactionDate: ticks,
-        transactionDateUTC: new Date(date).toUTCString(),
+        transactionTicks: ticks,
+        transactionDate: new Date(date).toUTCString(),
         sentAmount: sendAmount,
         sentCurrency: sendCoin.toUpperCase(),
         receivedAmount: intermediateValue * receiveYenPrice,
@@ -481,8 +481,8 @@ export const convertAllStatements = async (
       transactions.push({
         id: `${userId}_${ticks}_buy`,
         currencyPair: "JPY#" + receiveCoin,
-        transactionDate: ticks,
-        transactionDateUTC: new Date(date).toUTCString(),
+        transactionTicks: ticks,
+        transactionDate: new Date(date).toUTCString(),
         sentAmount: intermediateValue * receiveYenPrice,
         sentCurrency: "JPY",
         receivedAmount: intermediateValue,
@@ -542,8 +542,8 @@ export const convertAllStatements = async (
       transactions.push({
         id: `${userId}_${ticks}_sell`,
         currencyPair: sendCoin + "#JPY",
-        transactionDate: ticks,
-        transactionDateUTC: new Date(date).toUTCString(),
+        transactionTicks: ticks,
+        transactionDate: new Date(date).toUTCString(),
         sentAmount: sendAmount,
         sentCurrency: sendCoin.toUpperCase(),
         receivedAmount: intermediateValue,
@@ -557,8 +557,8 @@ export const convertAllStatements = async (
       transactions.push({
         id: `${userId}_${ticks}_buy`,
         currencyPair: "JPY#" + receiveCoin,
-        transactionDate: ticks,
-        transactionDateUTC: new Date(date).toUTCString(),
+        transactionTicks: ticks,
+        transactionDate: new Date(date).toUTCString(),
         sentAmount: intermediateValue,
         sentCurrency: "JPY",
         receivedAmount: receiveAmount,
@@ -636,8 +636,8 @@ export const convertAllStatements = async (
         transactions.push({
           id: `${userId}_${ticks}_sell_${c}`,
           currencyPair: c + "#JPY",
-          transactionDate: ticks,
-          transactionDateUTC: new Date(date).toUTCString(),
+          transactionTicks: ticks,
+          transactionDate: new Date(date).toUTCString(),
           sentAmount: v.amount,
           sentCurrency: c.toUpperCase(),
           receivedAmount: v.amount * v.price,
@@ -651,8 +651,8 @@ export const convertAllStatements = async (
         transactions.push({
           id: `${userId}_${ticks}_buy_bnb`,
           currencyPair: "JPY#BNB",
-          transactionDate: ticks,
-          transactionDateUTC: new Date(date).toUTCString(),
+          transactionTicks: ticks,
+          transactionDate: new Date(date).toUTCString(),
           sentAmount: v.amount * v.price,
           sentCurrency: "JPY",
           receivedAmount: v.bnbEq,

@@ -10,7 +10,8 @@ export const Adapters: Record<string, CsvAdapter> = {
     header: [
       "id",
       "currencyPair",
-      "transactionDate",
+      "transactionTicks",
+      "transactionDate(UTC)",
       "sentCurrency",
       "receivedCurrency",
       "sentAmount",
