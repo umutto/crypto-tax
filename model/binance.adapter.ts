@@ -34,13 +34,6 @@ export const convertAllStatements = async (
       continue;
     }
 
-    // @TODO: remove debug text
-    console.log("==========================================================");
-    console.log("Transaction process starts for", date);
-    console.log("Transactions: ", _transactions);
-    const tLength = transactions.length;
-    // @TODO: remove debug text
-
     const headers = _transactions.map((t) => t.Operation.toLowerCase());
     const operation = Object.keys(operationDict).find((k) => {
       const _headers = Array.from(new Set(headers)).sort();
@@ -628,18 +621,10 @@ export const convertAllStatements = async (
           _sendCoins[c].amount * _sendCoins[c]["price"]
         );
 
-        console.log("----------- BNB PARSING: ----------");
-        console.log(_receiveAmounts.map((t) => t * _bnbPrice));
-        console.log(_sendCoins[c].amount * _sendCoins[c]["price"]);
-        console.log("bnbPrice:" + _bnbPrice);
-        console.log("bnbEq:" + _bnbEq);
-        console.log("----------- BNB PARSING: ----------");
-
         _sendCoins[c]["bnbEq"] = _receiveAmounts[_bnbEq];
         _receiveAmounts.splice(_bnbEq, 1);
       }
 
-      console.log(_sendCoins);
       const userId = _transactions[0]["User_ID"];
       const ticks = (new Date(date).getTime() / 1000).toString();
       const remarks = _transactions
@@ -682,8 +667,6 @@ export const convertAllStatements = async (
     } else {
       console.error("Skipping: Unknown operation type in", operation);
     }
-
-    console.log("Parsed: ", transactions.slice(tLength));
   }
 
   return transactions;

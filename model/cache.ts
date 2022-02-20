@@ -31,7 +31,7 @@ export async function getCache(): Promise<ICache> {
   try {
     cachedData = JSON.parse(fs.readFileSync(path.join(__dirname, CACHE_PATH), "utf8"));
   } catch (error) {
-    console.log("Cache file is not initialized, creating a new file.");
+    console.warn("Cache file is not initialized, creating a new file.");
   }
 
   if (!cachedData) {
@@ -40,8 +40,8 @@ export async function getCache(): Promise<ICache> {
     try {
       fs.writeFileSync(path.join(__dirname, CACHE_PATH), JSON.stringify(data), "utf8");
     } catch (error) {
-      console.log("Error while writing to file");
-      console.log(error);
+      console.error("Error while writing to file");
+      console.error(error);
     }
 
     cachedData = data;
@@ -65,8 +65,8 @@ export async function updateCache(): Promise<ITransaction[]> {
   try {
     fs.writeFileSync(path.join(__dirname, CACHE_PATH), JSON.stringify(data), "utf8");
   } catch (error) {
-    console.log("Error while writing to file");
-    console.log(error);
+    console.error("Error while writing to file");
+    console.error(error);
   }
 
   return data;
