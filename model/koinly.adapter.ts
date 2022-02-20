@@ -31,6 +31,7 @@ export const convertKoinlyCsv = async (
       id: r["Id"],
       currencyPair: r["Sent Currency"] + "#" + r["Received Currency"],
       transactionDate: (new Date(r["Date"]).getTime() / 1000).toString(),
+      transactionDateUTC: new Date(r["Date"]).toUTCString(),
       sentCurrency: r["Sent Currency"],
       sentAmount: parseFloat(r["Sent Amount"]),
       receivedCurrency: r["Received Currency"],

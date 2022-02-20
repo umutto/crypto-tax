@@ -10,6 +10,7 @@ const fetchData = async (lastFetchDate?: string): Promise<ITransaction[]> => {
       sentCurrency: "btc", // btc
       receivedCurrency: "jpy", // jpy
       transactionDate: "12345678_02345678",
+      transactionDateUTC: "2017-01-01T00:00:00.000Z",
       sentAmount: 1.5,
       receivedAmount: 300356.21,
       feeAmount: 0.0,

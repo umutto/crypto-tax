@@ -11,6 +11,7 @@ export const convertDefaultCsv = async (
       id: r.id,
       currencyPair: r.currencyPair,
       transactionDate: r.transactionDate,
+      transactionDateUTC: r.transactionDateUTC,
       sentCurrency: r.sentCurrency,
       receivedCurrency: r.receivedCurrency,
       sentAmount: parseFloat(r.sentAmount),

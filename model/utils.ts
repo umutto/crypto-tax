@@ -5,6 +5,12 @@ export const compareArrays = <T>(a: T[], b: T[], strict = false): boolean => {
   return _a.length === _b.length && _a.every((value, index) => value === _b[index]);
 };
 
+export const closestIdx = (array: number[], value: number): number => {
+  return array.reduce((prev, curr, idx) => {
+    return Math.abs(curr - value) < Math.abs(array[prev] - value) ? idx : prev;
+  }, 0);
+};
+
 export const groupBy = <T>(array: T[], key: (keyof T)[]): { [key: string]: T[] } => {
   return array.reduce((c, a) => {
     const g = key.map((k) => `${a[k]}`).join(":");

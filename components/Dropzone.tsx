@@ -37,6 +37,7 @@ export default function Dropzone() {
           ? "dark"
           : "light") as Theme,
       };
+      setRowCount(0);
 
       parseCsv(
         acceptedFiles,
